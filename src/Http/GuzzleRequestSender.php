@@ -16,6 +16,6 @@ class GuzzleRequestSender implements RequestSenderInterface
      */
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
-        return (new Client())->send($request, ['timeout' => 15]);
+        return (new Client())->send($request);
     }
 }

@@ -27,6 +27,9 @@ abstract class EntityClientBase implements Endpoint
         return $this->api;
     }
 
+    /**
+     * @return string
+     */
     public function getPath(): string
     {
         return $this->path;
