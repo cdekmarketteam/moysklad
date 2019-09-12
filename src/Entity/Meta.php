@@ -16,28 +16,44 @@ final class Meta
         Group::class => 'group',
     ];
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $href;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $metadataHref;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $type;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $mediaType;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $uuidHref;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     private $size;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     private $limit;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     private $offset;
 
     /**

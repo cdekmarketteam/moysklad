@@ -4,18 +4,28 @@ namespace MoySklad\Entity;
 
 class AgentAccount extends MetaEntity
 {
-    /** @var \DateTime */
+    /** @var
+     * \DateTime
+     */
     public $updated;
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     public $isDefault;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     public $accountNumber;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     public $bankName;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     public $bic;
 }

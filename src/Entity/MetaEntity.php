@@ -4,12 +4,18 @@ namespace MoySklad\Entity;
 
 class MetaEntity
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public $id;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     public $accountId;
 
-    /** @var Meta */
+    /**
+     * @var Meta
+     */
     protected $meta;
 }
