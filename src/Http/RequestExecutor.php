@@ -5,7 +5,7 @@ namespace MoySklad\Http;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use MoySklad\ApiClient;
-use MoySklad\Entity\Entity;
+use MoySklad\Entity\MetaEntity;
 use MoySklad\Util\ApiClientException;
 use MoySklad\Util\Constant;
 
@@ -16,8 +16,11 @@ final class RequestExecutor
         METHOD_PUT = 'PUT',
         METHOD_DELETE = 'DELETE';
 
+    const PATH_TYPE = 'path',
+        URL_TYPE = 'url';
+
     /** @var string */
-    private $hostApiPath;
+    private $hostApiPath = '';
 
     /** @var string */
     private $url;
@@ -31,7 +34,7 @@ final class RequestExecutor
     /** @var array */
     private $params = [];
 
-    /** @var Entity */
+    /** @var MetaEntity */
     private $body = null;
 
     /** @var RequestSenderInterface */
@@ -41,16 +44,31 @@ final class RequestExecutor
      * RequestExecutor constructor.
      * @param ApiClient $api
      * @param string $url
+     * @param string $type
      */
-    private function __construct(ApiClient $api, string $url)
+    private function __construct(ApiClient $api, string $url, string $type = self::PATH_TYPE)
     {
-        if ($api == null) {
-            throw new \InvalidArgumentException("Для выполнения запроса к API нужен проинициализированный экземпляр ApiClient!");
+        switch ($type) {
+            case self::PATH_TYPE:
+                if (is_null($api)) {
+                    throw new \InvalidArgumentException('To make an API request you need an initialized instance of ApiClient!');
+                }
+
+                $this->client = $api->getClient();
+                $this->hostApiPath = $api->getHost().Constant::API_PATH;
+                $this->url = $this->hostApiPath.$url;
+                break;
+            case self::URL_TYPE:
+                if (is_null($api->getClient())) {
+                    throw new \InvalidArgumentException("To make an API request you need an initialized instance of RequestSenderInterface!");
+                }
+
+                $this->client = $api->getClient();
+                $this->url = $url;
+
+                break;
         }
 
-        $this->client = $api->getClient();
-        $this->hostApiPath = $api->getHost().Constant::API_PATH;
-        $this->url = $this->hostApiPath.$url;
         $this->auth($api);
     }
 
@@ -62,6 +80,16 @@ final class RequestExecutor
     public static function path(ApiClient $api, string $path): self
     {
         return new self($api, $path);
+    }
+
+    /**
+     * @param ApiClient $api
+     * @param string $url
+     * @return RequestExecutor
+     */
+    public static function url(ApiClient $api, string $url): self
+    {
+        return new self($api, $url, self::URL_TYPE);
     }
 
     /**
@@ -106,10 +134,10 @@ final class RequestExecutor
     }
 
     /**
-     * @param Entity $body
+     * @param MetaEntity $body
      * @return RequestExecutor
      */
-    public function body(Entity $body): self
+    public function body(MetaEntity $body): self
     {
         $this->body = $body;
 
@@ -140,10 +168,10 @@ final class RequestExecutor
 
     /**
      * @param Request $request
-     * @return array
+     * @return string
      * @throws ApiClientException
      */
-    private function executeRequest(Request $request): array
+    private function executeRequest(Request $request): string
     {
         try {
             $response = $this->client->sendRequest($request);
@@ -159,17 +187,17 @@ final class RequestExecutor
                 );
             }
 
-            return json_decode($response->getBody()->getContents(), true);
+            return $response->getBody()->getContents();
         } catch (GuzzleException $e) {
             throw new ApiClientException($request->getMethod().' '.$request->getUri(), $e->getCode(), $e->getMessage());
         }
     }
 
     /**
-     * @return array
+     * @return string
      * @throws ApiClientException
      */
-    public function get(): array
+    public function get(): string
     {
         $request = new Request(self::METHOD_GET, $this->buildFullUrl(), $this->headers);
 
@@ -177,10 +205,10 @@ final class RequestExecutor
     }
 
     /**
-     * @return array
+     * @return string
      * @throws ApiClientException
      */
-    public function post(): array
+    public function post(): string
     {
         if (!is_null($this->body)) {
             $this->body = json_encode($this->body);
@@ -192,10 +220,10 @@ final class RequestExecutor
     }
 
     /**
-     * @return array
+     * @return string
      * @throws ApiClientException
      */
-    public function put(): array
+    public function put(): string
     {
         if (!is_null($this->body)) {
             $this->body = json_encode($this->body);

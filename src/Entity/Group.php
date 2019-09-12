@@ -2,8 +2,6 @@
 
 namespace MoySklad\Entity;
 
-
-abstract class Entity
+class Group extends MetaEntity
 {
-
 }

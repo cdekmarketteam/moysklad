@@ -28,6 +28,6 @@ class CounterpartyClient extends EntityClientBase
     {
         $agentAccount = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts/'.$accountId)->params($params)->get();
 
-        return new AgentAccount($agentAccount);
+        return $this->serializer->deserialize($agentAccount, AgentAccount::class, self::SERIALIZE_FORMAT);
     }
 }
