@@ -5,6 +5,7 @@ namespace MoySklad\Entity;
 use MoySklad\Entity\Agent\Counterparty;
 use MoySklad\Entity\Agent\Employee;
 use MoySklad\Entity\Agent\Organization;
+use JMS\Serializer\Annotation\Type;
 
 final class Meta
 {
@@ -17,42 +18,42 @@ final class Meta
     ];
 
     /**
-     * @var string
+     * @Type("string")
      */
     private $href;
 
     /**
-     * @var string
+     * @Type("string")
      */
     private $metadataHref;
 
     /**
-     * @var string
+     * @Type("string")
      */
     private $type;
 
     /**
-     * @var string
+     * @Type("string")
      */
     private $mediaType;
 
     /**
-     * @var string
+     * @Type("string")
      */
     private $uuidHref;
 
     /**
-     * @var int
+     * @Type("int")
      */
     private $size;
 
     /**
-     * @var int
+     * @Type("int")
      */
     private $limit;
 
     /**
-     * @var int
+     * @Type("int")
      */
     private $offset;
 

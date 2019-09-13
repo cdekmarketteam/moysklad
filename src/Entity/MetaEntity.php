@@ -2,20 +2,22 @@
 
 namespace MoySklad\Entity;
 
+use JMS\Serializer\Annotation\Type;
+
 class MetaEntity
 {
     /**
-     * @var string
+     * @Type("string")
      */
     public $id;
 
     /**
-     * @var string
+     * @Type("string")
      */
     public $accountId;
 
     /**
-     * @var Meta
+     * @Type("MoySklad\Entity\Meta")
      */
     protected $meta;
 }
