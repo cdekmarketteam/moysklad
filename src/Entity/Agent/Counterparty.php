@@ -2,118 +2,148 @@
 
 namespace MoySklad\Entity\Agent;
 
-use MoySklad\Entity\AgentAccount;
+use MoySklad\Entity\MetaEntity;
 
-class Counterparty extends Agent
+class Counterparty extends MetaEntity
 {
-    /** @var string */
-    public $code;
+    /**
+     * @Type("bool")
+     */
+    public $shared;
 
-    /** @var string */
+    /**
+     * @Type("string")
+     */
     public $syncId;
 
-    /** @var string */
-    public $description;
+    /**
+     * @Type("DateTime")
+     */
+    public $updated;
 
-    /** @var bool */
+    /**
+     * @Type("DateTime")
+     */
+    public $created;
+
+    /**
+     * @Type("bool")
+     */
     public $archived;
 
-    /** @var string */
-    public $legalTitle;
+    /**
+     * @Type("string")
+     */
+    public $name;
 
-    /** @var string */
-    public $legalAddress;
+    /**
+     * @Type("string")
+     */
+    public $description;
 
-    /** @var string */
-    public $inn;
+    /**
+     * @Type("string")
+     */
+    public $code;
 
-    /** @var string */
-    public $kpp;
+    /**
+     * @Type("string")
+     */
+    public $externalCode;
 
-    /** @var string */
-    public $ogrn;
-
-    /** @var string */
-    public $ogrnip;
-
-    /** @var string */
-    public $okpo;
-
-    /** @var string */
-    public $certificateNumber;
-
-    /** @var \DateTime */
-    public $certificateDate;
-
-    /** @var string */
+    /**
+     * @Type("string")
+     */
     public $email;
 
-    /** @var string */
+    /**
+     * @Type("string")
+     */
     public $phone;
 
-    /** @var string */
+    /**
+     * @Type("string")
+     */
     public $fax;
 
-    /** @var string */
+    /**
+     * @Type("string")
+     */
     public $actualAddress;
 
-    /** @var int */
-    public $salesAmount;
+    /**
+     * @Type("string")
+     */
+    public $companyType;
 
-    /** @var string */
+    /**
+     * @Type("string")
+     */
     public $discountCardNumber;
 
-    /** @var string  */
-    public $companyType; //@todo make this field is enum
+    /**
+     * @Type("int")
+     */
+    public $salesAmount;
 
-    /** @var AgentAccount[] */
-    public $accounts = [];
+    /**
+     * @Type("int")
+     */
+    public $bonusPoints;
 
-    /** @var string[] */
+    /**
+     * @Type("array")
+     */
     public $tags = [];
 
-    /** @var DiscountData[] */
-    public $discounts = [];
+    /**
+     * @Type("MoySklad\Entity\Agent\Employee")
+     */
+    public $owner;
 
-    /** @var ContactPerson[] */
-    public $contactpersons = [];
+    /**
+     * @Type("MoySklad\Entity\Group")
+     */
+    public $group;
 
-    /** @var Note[] */
-    public $notes = [];
+    /**
+     * @Type("MoySklad\Entity\Account")
+     */
+    public $accounts;
 
-    /** @var State */
+//---------------------------------------
+    /**
+     * @Type("MoySklad\Entity\Meta")
+     */
     public $state;
 
-    /** @var PriceType */
+    /**
+     * @Type("MoySklad\Entity\Meta")
+     */
     public $priceType;
 
     /**
-     * @param array $data
-     * @return Counterparty
+     * @Type("MoySklad\Entity\Meta")
      */
-    public static function createFromArray(array $data): self
-    {
-        $entity = new self();
-        $entity->code = $data['code'];
-        $entity->syncId = $data['code'];
-        $entity->description = $data['code'];
-        $entity->archived = $data['code'];
-        $entity->legalTitle = $data['code'];
-        $entity->legalAddress = $data['code'];
-        $entity->inn = $data['code'];
-        $entity->kpp = $data['code'];
-        $entity->ogrn = $data['code'];
-        $entity->ogrnip = $data['code'];
-        $entity->okpo = $data['code'];
-        $entity->certificateNumber = $data['code'];
-        $entity->certificateDate = $data['code'];
-        $entity->email = $data['code'];
-        $entity->phone = $data['code'];
-        $entity->fax = $data['code'];
-        $entity->actualAddress = $data['code'];
-        $entity->salesAmount = $data['code'];
-        $entity->discountCardNumber = $data['code'];
+    public $legalAddressFull;
 
-        return $entity;
-    }
+    /**
+     * @Type("MoySklad\Entity\Meta")
+     */
+    public $actualAddressFull;
+
+    /**
+     * @Type("MoySklad\Entity\Meta")
+     */
+    public $bonusProgram;
+
+    /**
+     * @Type("MoySklad\Entity\Meta")
+     */
+    public $contactpersons;
+
+    /**
+     * @Type("MoySklad\Entity\Meta")
+     */
+    public $notes;
 }

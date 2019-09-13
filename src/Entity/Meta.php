@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation\Type;
 final class Meta
 {
     private const TYPES = [
-        AgentAccount::class => 'account',
+        Account::class => 'account',
         Counterparty::class => 'counterparty',
         Employee::class => 'counterparty',
         Organization::class => 'organization',

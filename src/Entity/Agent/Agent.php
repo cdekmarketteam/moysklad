@@ -2,56 +2,52 @@
 
 namespace MoySklad\Entity\Agent;
 
-use MoySklad\Entity\Group;
 use MoySklad\Entity\MetaEntity;
 
 abstract class Agent extends MetaEntity
 {
-    const COUNTERPARTY = 'counterparty',
-        EMPLOYEE = 'employee',
-        ORGANIZATION = 'organization';
-
-    /** @var Employee */
-    public $owner;
-
-    /** @var bool */
-    public $shared;
-
-    /** @var Group */
-    public $group;
-
-    /** @var string */
-    public $externalCode;
-
-    /** @var \DateTime */
-    public $created;
-
-    /** @var \DateTime */
-    public $updated;
-
-    /** @var array */
-    public $attributes = [];
+    /**
+     * @Type("string")
+     */
+    public $legalTitle;
 
     /**
-     * @param array $data
-     * @return Agent
+     * @Type("string")
      */
-    public static function createFromArray(array $data): Agent
-    {
-        switch ($data['type']) {
-            case self::COUNTERPARTY:
-                $entity = Counterparty::createFromArray($data);
-                break;
-            case self::EMPLOYEE:
-                $entity = Employee::createFromArray($data);
-                break;
-            case self::ORGANIZATION:
-                $entity = Organization::createFromArray($data);
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf("Unsupported agent's type '%s'", $data['type']));
-        }
+    public $legalAddress;
 
-        return $entity;
-    }
+    /**
+     * @Type("string")
+     */
+    public $inn;
+
+    /**
+     * @Type("string")
+     */
+    public $okpo;
+
+    /**
+     * @Type("string")
+     */
+    public $ogrnip;
+
+    /**
+     * @Type("string")
+     */
+    public $certificateNumber;
+
+    /**
+     * @Type("Datetime")
+     */
+    public $certificateDate;
+
+    /**
+     * @Type("string")
+     */
+    public $kpp;
+
+    /**
+     * @Type("string")
+     */
+    public $ogrn;
 }

@@ -6,7 +6,9 @@ use MoySklad\ApiClient;
 
 class EntityClient
 {
-    /** @var ApiClient */
+    /**
+     * @var ApiClient
+     */
     private $api;
 
     public function __construct(ApiClient $api)

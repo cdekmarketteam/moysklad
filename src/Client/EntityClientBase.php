@@ -7,10 +7,14 @@ use MoySklad\Client\Endpoint\Endpoint;
 
 abstract class EntityClientBase implements Endpoint
 {
-    /** @var ApiClient */
+    /**
+     * @var ApiClient
+     */
     protected $api;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $path;
 
     public function __construct(ApiClient $api, string $path)

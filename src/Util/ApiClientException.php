@@ -4,12 +4,22 @@ namespace MoySklad\Util;
 
 class ApiClientException extends \Exception
 {
-    /** @var int */
+    /**
+     * @var int
+     */
     private $statusCode;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $reasonPhrase;
 
+    /**
+     * ApiClientException constructor.
+     * @param string $uri
+     * @param int $statusCode
+     * @param string $reasonPhrase
+     */
     public function __construct(string $uri, int $statusCode, string $reasonPhrase)
     {
         parent::__construct($uri.': '.$statusCode.' '.$reasonPhrase);

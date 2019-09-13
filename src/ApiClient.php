@@ -11,16 +11,24 @@ class ApiClient
 {
     use StringsTrait;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $host;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $login;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $password;
 
-    /** @var RequestSenderInterface */
+    /**
+     * @var RequestSenderInterface
+     */
     private $client;
 
     /**

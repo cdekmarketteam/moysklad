@@ -3,7 +3,7 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
-use MoySklad\Entity\AgentAccount;
+use MoySklad\Entity\Account;
 use MoySklad\Http\RequestExecutor;
 
 class CounterpartyClient extends EntityClientBase
@@ -21,14 +21,14 @@ class CounterpartyClient extends EntityClientBase
      * @param string $counterpartyId
      * @param string $accountId
      * @param array $params
-     * @return AgentAccount
+     * @return Account
      * @throws \MoySklad\Util\ApiClientException
      */
-    public function getAccount(string $counterpartyId, string $accountId, array $params): AgentAccount
+    public function getAccount(string $counterpartyId, string $accountId, array $params): Account
     {
-        /** @var $agentAccount AgentAccount */
-        $agentAccount = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts/'.$accountId)->params($params)->get(AgentAccount::class);
+        /** @var $account Account */
+        $account = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts/'.$accountId)->params($params)->get(Account::class);
 
-        return $agentAccount;
+        return $account;
     }
 }

@@ -26,28 +26,44 @@ final class RequestExecutor
 
     private const SERIALIZE_FORMAT = 'json';
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $hostApiPath = '';
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $url;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     private $query = [];
 
-    /** @var array */
+    /**
+     * @var array
+     */
     private $headers = [];
 
-    /** @var array */
+    /**
+     * @var array
+     */
     private $params = [];
 
-    /** @var MetaEntity */
+    /**
+     * @var MetaEntity
+     */
     private $body = null;
 
-    /** @var RequestSenderInterface */
+    /**
+     * @var RequestSenderInterface
+     */
     private $client;
 
-    /** @var Serializer */
+    /**
+     * @var Serializer
+     */
     public $serializer;
 
     /**
