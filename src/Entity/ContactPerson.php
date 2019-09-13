@@ -2,7 +2,7 @@
 
 namespace MoySklad\Entity;
 
-class Contactperson extends MetaEntity
+class ContactPerson extends MetaEntity
 {
     /**
      * @Type("DateTime")

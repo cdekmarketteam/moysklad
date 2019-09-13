@@ -111,7 +111,26 @@ class Counterparty extends MetaEntity
      */
     public $accounts;
 
-//---------------------------------------
+    /**
+     * @Type("MoySklad\Entity\Address")
+     */
+    public $legalAddressFull;
+
+    /**
+     * @Type("MoySklad\Entity\Address")
+     */
+    public $actualAddressFull;
+
+    /**
+     * @Type("MoySklad\Entity\PriceType")
+     */
+    public $priceType;
+
+    /**
+     * @Type("MoySklad\Entity\ContactPerson")
+     */
+    public $contactpersons;
+
     /**
      * @Type("MoySklad\Entity\Meta")
      */
@@ -120,27 +139,7 @@ class Counterparty extends MetaEntity
     /**
      * @Type("MoySklad\Entity\Meta")
      */
-    public $priceType;
-
-    /**
-     * @Type("MoySklad\Entity\Meta")
-     */
-    public $legalAddressFull;
-
-    /**
-     * @Type("MoySklad\Entity\Meta")
-     */
-    public $actualAddressFull;
-
-    /**
-     * @Type("MoySklad\Entity\Meta")
-     */
     public $bonusProgram;
-
-    /**
-     * @Type("MoySklad\Entity\Meta")
-     */
-    public $contactpersons;
 
     /**
      * @Type("MoySklad\Entity\Meta")
