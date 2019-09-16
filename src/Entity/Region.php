@@ -2,6 +2,8 @@
 
 namespace MoySklad\Entity;
 
+use JMS\Serializer\Annotation\Type;
+
 class Region extends MetaEntity
 {
     /**
@@ -10,7 +12,7 @@ class Region extends MetaEntity
     public $version;
 
     /**
-     * @Type("DateTime")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
     public $updated;
 

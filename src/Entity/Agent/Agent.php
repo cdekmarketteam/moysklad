@@ -3,6 +3,7 @@
 namespace MoySklad\Entity\Agent;
 
 use MoySklad\Entity\MetaEntity;
+use JMS\Serializer\Annotation\Type;
 
 abstract class Agent extends MetaEntity
 {
@@ -37,7 +38,7 @@ abstract class Agent extends MetaEntity
     public $certificateNumber;
 
     /**
-     * @Type("Datetime")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
     public $certificateDate;
 

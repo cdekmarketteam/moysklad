@@ -3,6 +3,7 @@
 namespace MoySklad\Entity\Agent;
 
 use MoySklad\Entity\MetaEntity;
+use JMS\Serializer\Annotation\Type;
 
 class Counterparty extends MetaEntity
 {
@@ -17,12 +18,12 @@ class Counterparty extends MetaEntity
     public $syncId;
 
     /**
-     * @Type("DateTime")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
     public $updated;
 
     /**
-     * @Type("DateTime")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
     public $created;
 

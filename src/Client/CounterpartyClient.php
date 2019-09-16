@@ -5,6 +5,7 @@ namespace MoySklad\Client;
 use MoySklad\ApiClient;
 use MoySklad\Entity\Account;
 use MoySklad\Http\RequestExecutor;
+use MoySklad\Util\Exception\ApiClientException;
 
 class CounterpartyClient extends EntityClientBase
 {
@@ -22,7 +23,7 @@ class CounterpartyClient extends EntityClientBase
      * @param string $accountId
      * @param array $params
      * @return Account
-     * @throws \MoySklad\Util\ApiClientException
+     * @throws ApiClientException
      */
     public function getAccount(string $counterpartyId, string $accountId, array $params): Account
     {

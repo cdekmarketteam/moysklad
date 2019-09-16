@@ -2,6 +2,8 @@
 
 namespace MoySklad\Entity;
 
+use JMS\Serializer\Annotation\Type;
+
 class PriceType extends MetaEntity
 {
     /**

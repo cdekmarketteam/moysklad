@@ -2,6 +2,8 @@
 
 namespace MoySklad\Entity;
 
+use JMS\Serializer\Annotation\Type;
+
 class Image extends MetaEntity
 {
     /**
@@ -20,7 +22,7 @@ class Image extends MetaEntity
     public $size;
 
     /**
-     * @Type("DateTime")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
     public $updated;
 

@@ -5,11 +5,11 @@ namespace MoySklad\Http;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use JMS\Serializer\Serializer;
-use JMS\Serializer\SerializerBuilder;
 use MoySklad\ApiClient;
 use MoySklad\Entity\MetaEntity;
-use MoySklad\Util\ApiClientException;
+use MoySklad\Util\Exception\ApiClientException;
 use MoySklad\Util\Constant;
+use MoySklad\Util\Serializer\SerializerInstance;
 use MoySklad\Util\StringsTrait;
 
 final class RequestExecutor
@@ -23,8 +23,6 @@ final class RequestExecutor
 
     const PATH_TYPE = 'path',
         URL_TYPE = 'url';
-
-    private const SERIALIZE_FORMAT = 'json';
 
     /**
      * @var string
@@ -74,12 +72,7 @@ final class RequestExecutor
      */
     private function __construct(ApiClient $api, string $url, string $type = self::PATH_TYPE)
     {
-        $this->serializer = SerializerBuilder::create()->
-        setPropertyNamingStrategy(
-            new \JMS\Serializer\Naming\SerializedNameAnnotationStrategy(
-                new \JMS\Serializer\Naming\IdenticalPropertyNamingStrategy()
-            )
-        )->build();
+        $this->serializer = SerializerInstance::getInstance();
 
         switch ($type) {
             case self::PATH_TYPE:
@@ -235,7 +228,7 @@ final class RequestExecutor
     {
         $request = new Request(self::METHOD_GET, $this->buildFullUrl(), $this->headers);
 
-        return $this->serializer->deserialize($this->executeRequest($request), $className, self::SERIALIZE_FORMAT);
+        return $this->serializer->deserialize($this->executeRequest($request), $className, SerializerInstance::JSON_FORMAT);
     }
 
     /**
@@ -247,12 +240,12 @@ final class RequestExecutor
     {
         $strBody = null;
         if (!is_null($this->body)) {
-            $strBody = $this->serializer->serialize($this->body, self::SERIALIZE_FORMAT);
+            $strBody = $this->serializer->serialize($this->body, SerializerInstance::JSON_FORMAT);
         }
 
         $request = new Request(self::METHOD_POST, $this->buildFullUrl(), $this->headers, $strBody);
 
-        return $this->serializer->deserialize($this->executeRequest($request), $className, self::SERIALIZE_FORMAT);
+        return $this->serializer->deserialize($this->executeRequest($request), $className, SerializerInstance::JSON_FORMAT);
     }
 
     /**
@@ -264,12 +257,12 @@ final class RequestExecutor
     {
         $strBody = null;
         if (!is_null($this->body)) {
-            $strBody = $this->serializer->serialize($this->body, self::SERIALIZE_FORMAT);
+            $strBody = $this->serializer->serialize($this->body, SerializerInstance::JSON_FORMAT);
         }
 
         $request = new Request(self::METHOD_PUT, $this->buildFullUrl(), $this->headers, $strBody);
 
-        return $this->serializer->deserialize($this->executeRequest($request), $className, self::SERIALIZE_FORMAT);
+        return $this->serializer->deserialize($this->executeRequest($request), $className, SerializerInstance::JSON_FORMAT);
     }
 
     /**

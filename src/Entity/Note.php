@@ -2,10 +2,12 @@
 
 namespace MoySklad\Entity;
 
-class Event extends MetaEntity
+use JMS\Serializer\Annotation\Type;
+
+class Note extends MetaEntity
 {
     /**
-     * @Type("DateTime")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
     public $created;
 

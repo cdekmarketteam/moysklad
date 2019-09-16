@@ -1,6 +1,6 @@
 <?php
 
-namespace MoySklad\Util;
+namespace MoySklad\Util\Exception;
 
 class ApiClientException extends \Exception
 {

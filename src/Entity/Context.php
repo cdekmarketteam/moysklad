@@ -4,10 +4,10 @@ namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
 
-class Group extends MetaEntity
+final class Context
 {
     /**
-     * @Type("string")
+     * @Type("MoySklad\Entity\Agent\Employee")
      */
-    public $name;
+    public $employee;
 }
