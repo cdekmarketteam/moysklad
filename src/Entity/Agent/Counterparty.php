@@ -8,59 +8,14 @@ use JMS\Serializer\Annotation\Type;
 class Counterparty extends MetaEntity
 {
     /**
-     * @Type("bool")
-     */
-    public $shared;
-
-    /**
      * @Type("string")
      */
     public $syncId;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
-     */
-    public $updated;
-
-    /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
-     */
-    public $created;
-
-    /**
-     * @Type("bool")
-     */
-    public $archived;
-
-    /**
-     * @Type("string")
-     */
-    public $name;
-
-    /**
-     * @Type("string")
-     */
-    public $description;
-
-    /**
      * @Type("string")
      */
     public $code;
-
-    /**
-     * @Type("string")
-     */
-    public $externalCode;
-
-    /**
-     * @Type("string")
-     */
-    public $email;
-
-    /**
-     * @Type("string")
-     */
-    public $phone;
 
     /**
      * @Type("string")
@@ -83,6 +38,41 @@ class Counterparty extends MetaEntity
     public $discountCardNumber;
 
     /**
+     * @Type("string")
+     */
+    public $legalTitle;
+
+    /**
+     * @Type("string")
+     */
+    public $legalAddress;
+
+    /**
+     * @Type("string")
+     */
+    public $okpo;
+
+    /**
+     * @Type("string")
+     */
+    public $ogrnip;
+
+    /**
+     * @Type("string")
+     */
+    public $certificateNumber;
+
+    /**
+     * @Type("string")
+     */
+    public $kpp;
+
+    /**
+     * @Type("string")
+     */
+    public $ogrn;
+
+    /**
      * @Type("int")
      */
     public $salesAmount;
@@ -98,29 +88,19 @@ class Counterparty extends MetaEntity
     public $tags = [];
 
     /**
-     * @Type("MoySklad\Entity\Agent\Employee")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
-    public $owner;
+    public $certificateDate;
 
     /**
-     * @Type("MoySklad\Entity\Group")
+     * @Type("MoySklad\Entity\MetaEntity")
      */
-    public $group;
+    public $state;
 
     /**
-     * @Type("MoySklad\Entity\Account")
+     * @Type("MoySklad\Entity\MetaEntity")
      */
-    public $accounts;
-
-    /**
-     * @Type("MoySklad\Entity\Address")
-     */
-    public $legalAddressFull;
-
-    /**
-     * @Type("MoySklad\Entity\Address")
-     */
-    public $actualAddressFull;
+    public $bonusProgram;
 
     /**
      * @Type("MoySklad\Entity\PriceType")
@@ -128,22 +108,27 @@ class Counterparty extends MetaEntity
     public $priceType;
 
     /**
-     * @Type("MoySklad\Entity\ContactPerson")
+     * @Type("MoySklad\Entity\Address")
+     */
+    public $actualAddressFull;
+
+    /**
+     * @Type("MoySklad\Entity\Address")
+     */
+    public $legalAddressFull;
+
+    /**
+     * @Type("MoySklad\Entity\ListEntity")
+     */
+    public $accounts;
+
+    /**
+     * @Type("MoySklad\Entity\ListEntity")
      */
     public $contactpersons;
 
     /**
-     * @Type("MoySklad\Entity\Meta")
-     */
-    public $state;
-
-    /**
-     * @Type("MoySklad\Entity\Meta")
-     */
-    public $bonusProgram;
-
-    /**
-     * @Type("MoySklad\Entity\Meta")
+     * @Type("MoySklad\Entity\ListEntity")
      */
     public $notes;
 }

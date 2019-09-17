@@ -10,6 +10,31 @@ abstract class Agent extends MetaEntity
     /**
      * @Type("string")
      */
+    public $name;
+
+    /**
+     * @Type("string")
+     */
+    public $description;
+
+    /**
+     * @Type("string")
+     */
+    public $email;
+
+    /**
+     * @Type("string")
+     */
+    public $phone;
+
+    /**
+     * @Type("string")
+     */
+    public $externalCode;
+
+    /**
+     * @Type("string")
+     */
     public $legalTitle;
 
     /**
@@ -23,32 +48,37 @@ abstract class Agent extends MetaEntity
     public $inn;
 
     /**
-     * @Type("string")
+     * @Type("bool")
      */
-    public $okpo;
+    public $shared;
 
     /**
-     * @Type("string")
+     * @Type("bool")
      */
-    public $ogrnip;
+    public $archived;
 
     /**
-     * @Type("string")
+     * @Type("array")
      */
-    public $certificateNumber;
+    public $attributes = [];
 
     /**
      * @Type("DateTime<'Y-m-d H:i:s'>")
      */
-    public $certificateDate;
+    public $created;
 
     /**
-     * @Type("string")
+     * @Type("DateTime<'Y-m-d H:i:s'>")
      */
-    public $kpp;
+    public $updated;
 
     /**
-     * @Type("string")
+     * @Type("MoySklad\Entity\Agent\Employee")
      */
-    public $ogrn;
+    public $owner;
+
+    /**
+     * @Type("MoySklad\Entity\Group")
+     */
+    public $group;
 }
