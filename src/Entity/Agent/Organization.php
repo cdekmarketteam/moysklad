@@ -128,7 +128,7 @@ class Organization extends MetaEntity
     public $legalAddressFull;
 
     /**
-     * @Type("MoySklad\Entity\MetaEntity")
+     * @Type("MoySklad\Entity\BonusProgram")
      */
     public $bonusProgram;
 

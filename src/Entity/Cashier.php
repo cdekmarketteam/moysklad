@@ -12,7 +12,7 @@ class Cashier extends MetaEntity
     public $employee;
 
     /**
-     * @Type("MoySklad\Entity\Meta")
+     * @Type("MoySklad\Entity\MetaEntity")
      */
     public $retailStore;
 }

@@ -93,12 +93,12 @@ class Counterparty extends MetaEntity
     public $certificateDate;
 
     /**
-     * @Type("MoySklad\Entity\MetaEntity")
+     * @Type("MoySklad\Entity\State")
      */
     public $state;
 
     /**
-     * @Type("MoySklad\Entity\MetaEntity")
+     * @Type("MoySklad\Entity\BonusProgram")
      */
     public $bonusProgram;
 
