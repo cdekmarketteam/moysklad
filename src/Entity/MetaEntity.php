@@ -5,6 +5,7 @@ namespace MoySklad\Entity;
 use JMS\Serializer\Annotation\Type;
 use MoySklad\ApiClient;
 use MoySklad\Http\RequestExecutor;
+use MoySklad\Util\Exception\ApiClientException;
 
 class MetaEntity
 {
@@ -25,10 +26,15 @@ class MetaEntity
 
     /**
      * @param ApiClient $api
-     * @throws \MoySklad\Util\Exception\ApiClientException
+     * @throws ApiClientException
+     * @throws \Exception
      */
     public function fetch(ApiClient $api): void
     {
+        if (empty($this->meta->href)) {
+            throw new \Exception("The entity has not metadata.");
+        }
+
         $fetched = RequestExecutor::url($api, $this->meta->href)->get(get_class($this));
 
         foreach ($this as $property => &$value) {
