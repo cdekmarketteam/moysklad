@@ -10,6 +10,7 @@ final class Meta
         'counterparty' => Agent\Counterparty::class,
         'employee' => Agent\Employee::class,
         'organization' => Agent\Organization::class,
+        'bonusprogram' => Discount\BonusProgram::class,
         'account' => Account::class,
         'address' => Address::class,
         'cashier' => Cashier::class,
@@ -21,6 +22,8 @@ final class Meta
         'image' => Image::class,
         'pricetype' => PriceType::class,
         'region' => Region::class,
+        'productfolder' => ProductFolder::class,
+        'state' => State::class,
     ];
 
     /**
