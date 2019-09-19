@@ -4,11 +4,6 @@ namespace MoySklad\Util\Param;
 
 class Order extends Param
 {
-    public const DIRECTION = [
-        'asc' => 'asc',
-        'desc' => 'desc',
-    ];
-
     /**
      * @var string
      */
@@ -24,14 +19,29 @@ class Order extends Param
      * @param string $field
      * @param string $direction
      */
-    public function __construct(string $field, string $direction)
+    private function __construct(string $field, string $direction)
     {
-        if (!isset(self::DIRECTION[strtolower($direction)])) {
-            throw new \InvalidArgumentException('Unsupported direction value');
-        }
-
         $this->field = $field;
         $this->direction = $direction;
+        $this->type = self::ORDER_PARAM;
+    }
+
+    /**
+     * @param string $field
+     * @return Order
+     */
+    public static function asc(string $field): self
+    {
+        return new self($field, __FUNCTION__);
+    }
+
+    /**
+     * @param string $field
+     * @return Order
+     */
+    public static function desc(string $field): self
+    {
+        return new self($field, __FUNCTION__);
     }
 
     /**
@@ -39,6 +49,6 @@ class Order extends Param
      */
     public function render(): string
     {
-        return sprintf('order=%s,%s', $this->field, $this->direction);
+        return sprintf('%s,%s', $this->field, $this->direction);
     }
 }

@@ -41,4 +41,12 @@ class MetaEntity
             $value = $fetched->$property;
         }
     }
+
+    /**
+     * @return Meta|null
+     */
+    public function getMeta(): ?Meta
+    {
+        return $this->getMeta();
+    }
 }

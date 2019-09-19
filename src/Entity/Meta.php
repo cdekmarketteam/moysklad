@@ -29,42 +29,47 @@ final class Meta
     /**
      * @Type("string")
      */
-    private $href;
+    public $href;
 
     /**
      * @Type("string")
      */
-    private $metadataHref;
+    public $metadataHref;
 
     /**
      * @Type("string")
      */
-    private $type;
+    public $type;
 
     /**
      * @Type("string")
      */
-    private $mediaType;
+    public $mediaType;
 
     /**
      * @Type("string")
      */
-    private $uuidHref;
+    public $uuidHref;
+
+    /**
+     * @Type("string")
+     */
+    public $downloadHref;
 
     /**
      * @Type("int")
      */
-    private $size;
+    public $size;
 
     /**
      * @Type("int")
      */
-    private $limit;
+    public $limit;
 
     /**
      * @Type("int")
      */
-    private $offset;
+    public $offset;
 
     /**
      * @param string $type
@@ -73,7 +78,7 @@ final class Meta
     public static function getClassNameByType(string $type): string
     {
         if (!isset(self::TYPES[$type])) {
-            throw new \InvalidArgumentException('MetaEntity type unsupported');
+            throw new \InvalidArgumentException('Meta type unsupported');
         }
 
         return self::TYPES[$type];

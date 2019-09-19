@@ -9,6 +9,7 @@ use MoySklad\ApiClient;
 use MoySklad\Entity\MetaEntity;
 use MoySklad\Util\Exception\ApiClientException;
 use MoySklad\Util\Constant;
+use MoySklad\Util\Param\Param;
 use MoySklad\Util\Serializer\SerializerInstance;
 use MoySklad\Util\StringsTrait;
 
@@ -45,7 +46,7 @@ final class RequestExecutor
     private $headers = [];
 
     /**
-     * @var array
+     * @var Param[]
      */
     private $params = [];
 
@@ -147,7 +148,7 @@ final class RequestExecutor
     }
 
     /**
-     * @param array $params
+     * @param Param[] $params
      * @return RequestExecutor
      */
     public function params(array $params): self
@@ -186,10 +187,16 @@ final class RequestExecutor
      */
     private function buildFullUrl(): string
     {
-        $query = array_merge($this->query, $this->params);
-        $query = http_build_query($query);
+        if (count($this->params) < 1) {
+            return $this->url;
+        }
 
-        return $this->url.(strlen($query) == 0 ? '' : '?'.$query);
+        $paramTypes = array_unique(array_column($this->params, 'type'));
+        foreach ($paramTypes as $paramType) {
+            $this->query[urlencode($paramType)] = urlencode(Param::renderParamString($paramType, $this->params, $this->hostApiPath));
+        }
+
+        return $this->url.'?'.http_build_query($this->query);
     }
 
     /**
