@@ -47,6 +47,6 @@ class MetaEntity
      */
     public function getMeta(): ?Meta
     {
-        return $this->getMeta();
+        return $this->meta;
     }
 }

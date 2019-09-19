@@ -193,7 +193,7 @@ final class RequestExecutor
 
         $paramTypes = array_unique(array_column($this->params, 'type'));
         foreach ($paramTypes as $paramType) {
-            $this->query[urlencode($paramType)] = urlencode(Param::renderParamString($paramType, $this->params, $this->hostApiPath));
+            $this->query[urlencode($paramType)] = urlencode(Param::renderParamString($paramType, $this->params));
         }
 
         return $this->url.'?'.http_build_query($this->query);

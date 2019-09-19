@@ -37,94 +37,23 @@ class EntityFilter extends Param
 
     /**
      * @param string $field
-     * @param MetaEntity $value
+     * @param MetaEntity $metaEntity
      * @return EntityFilter
      */
-    public static function eq(string $field, MetaEntity $value): self
+    public static function eq(string $field, MetaEntity $metaEntity): self
     {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
+        return new self($field, $metaEntity, self::CONDITIONS[__FUNCTION__]);
     }
 
     /**
      * @param string $field
-     * @param MetaEntity $value
+     * @param MetaEntity $metaEntity
      * @return EntityFilter
      */
-    public static function neq(string $field, MetaEntity $value): self
+    public static function neq(string $field, MetaEntity $metaEntity): self
     {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
+        return new self($field, $metaEntity, self::CONDITIONS[__FUNCTION__]);
     }
-
-    /**
-     * @param string $field
-     * @param MetaEntity $value
-     * @return EntityFilter
-     */
-    public static function gt(string $field, MetaEntity $value): self
-    {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
-    }
-
-    /**
-     * @param string $field
-     * @param MetaEntity $value
-     * @return EntityFilter
-     */
-    public static function lt(string $field, MetaEntity $value): self
-    {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
-    }
-
-    /**
-     * @param string $field
-     * @param MetaEntity $value
-     * @return EntityFilter
-     */
-    public static function gte(string $field, MetaEntity $value): self
-    {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
-    }
-
-    /**
-     * @param string $field
-     * @param MetaEntity $value
-     * @return EntityFilter
-     */
-    public static function lte(string $field, MetaEntity $value): self
-    {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
-    }
-
-    /**
-     * @param string $field
-     * @param MetaEntity $value
-     * @return EntityFilter
-     */
-    public static function like(string $field, MetaEntity $value): self
-    {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
-    }
-
-    /**
-     * @param string $field
-     * @param MetaEntity $value
-     * @return EntityFilter
-     */
-    public static function prefix(string $field, MetaEntity $value): self
-    {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
-    }
-
-    /**
-     * @param string $field
-     * @param MetaEntity $value
-     * @return EntityFilter
-     */
-    public static function postfix(string $field, MetaEntity $value): self
-    {
-        return new self($field, $value, self::CONDITIONS[__FUNCTION__]);
-    }
-
 
     /**
      * @return string

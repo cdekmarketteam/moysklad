@@ -98,7 +98,7 @@ class Counterparty extends MetaEntity
     public $state;
 
     /**
-     * @Type("MoySklad\Entity\BonusProgram")
+     * @Type("MoySklad\Entity\Discount\BonusProgram")
      */
     public $bonusProgram;
 

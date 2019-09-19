@@ -27,7 +27,7 @@ class CounterpartyClient extends EntityClientBase
      * @return Account
      * @throws ApiClientException
      */
-    public function getAccount(string $counterpartyId, string $accountId, array $params): Account
+    public function getAccount(string $counterpartyId, string $accountId, array $params = []): Account
     {
         /** @var $account Account */
         $account = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts/'.$accountId)->params($params)->get(Account::class);
@@ -35,7 +35,10 @@ class CounterpartyClient extends EntityClientBase
         return $account;
     }
 
-    public function getMetaEntityClass(): string
+    /**
+     * @return string
+     */
+    protected function getMetaEntityClass(): string
     {
         return Counterparty::class;
     }

@@ -53,10 +53,9 @@ abstract class Param
     /**
      * @param string $paramType
      * @param Param[] $params
-     * @param string $hostApiPath
      * @return string
      */
-    public static function renderParamString(string $paramType, array $params, string $hostApiPath): string
+    public static function renderParamString(string $paramType, array $params): string
     {
         $filteredParams = array_filter($params, function (Param $param) use ($paramType) {
             if ($param->type == $paramType) {
@@ -65,13 +64,8 @@ abstract class Param
             return false;
         });
 
-        $stringsOfParams = array_map(function (Param $param) use ($hostApiPath) {
-            $string = $param->render();
-            if (get_class($param) == EntityFilter::class) {
-                $string = $hostApiPath.$string;
-            }
-
-            return $string;
+        $stringsOfParams = array_map(function (Param $param) {
+            return $param->render();
         }, $filteredParams);
 
         if ($paramType == self::FILTER_PARAM || $paramType == self::ORDER_PARAM) {

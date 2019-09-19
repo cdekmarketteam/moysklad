@@ -27,12 +27,12 @@ abstract class EntityClientBase
         $this->path = $path;
     }
 
-    abstract public function getMetaEntityClass(): string;
+    abstract protected function getMetaEntityClass(): string;
 
     /**
      * @return ApiClient
      */
-    public function getApi(): ApiClient
+    protected function getApi(): ApiClient
     {
         return $this->api;
     }
@@ -40,7 +40,7 @@ abstract class EntityClientBase
     /**
      * @return string
      */
-    public function getPath(): string
+    protected function getPath(): string
     {
         return $this->path;
     }
@@ -50,10 +50,10 @@ abstract class EntityClientBase
      * @return ListEntity
      * @throws ApiClientException
      */
-    public function getList(array $params): ListEntity
+    public function getList(array $params = []): ListEntity
     {
         /** @var $listEntity ListEntity */
-        $listEntity = RequestExecutor::path($this->getApi(), $this->getPath())->params($params)->get($this->getMetaEntityClass());
+        $listEntity = RequestExecutor::path($this->getApi(), $this->getPath())->params($params)->get(ListEntity::class);
 
         return $listEntity;
     }
@@ -64,7 +64,7 @@ abstract class EntityClientBase
      * @return MetaEntity
      * @throws ApiClientException
      */
-    public function getById(string $id, array $params)
+    public function getById(string $id, array $params = [])
     {
         return RequestExecutor::path($this->getApi(), $this->getPath().$id)->params($params)->get($this->getMetaEntityClass());
     }
