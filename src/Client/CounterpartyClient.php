@@ -4,8 +4,10 @@ namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
 use MoySklad\Entity\Account;
+use MoySklad\Entity\Agent\Counterparty;
 use MoySklad\Http\RequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;
+use MoySklad\Util\Param\Param;
 
 class CounterpartyClient extends EntityClientBase
 {
@@ -21,7 +23,7 @@ class CounterpartyClient extends EntityClientBase
     /**
      * @param string $counterpartyId
      * @param string $accountId
-     * @param array $params
+     * @param Param[] $params
      * @return Account
      * @throws ApiClientException
      */
@@ -31,5 +33,10 @@ class CounterpartyClient extends EntityClientBase
         $account = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts/'.$accountId)->params($params)->get(Account::class);
 
         return $account;
+    }
+
+    public function getMetaEntityClass(): string
+    {
+        return Counterparty::class;
     }
 }
