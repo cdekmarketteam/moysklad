@@ -13,10 +13,19 @@ class Search extends Param
      * Search constructor.
      * @param string $value
      */
-    public function __construct(string $value)
+    private function __construct(string $value)
     {
         $this->value = $value;
         $this->type = self::SEARCH_PARAM;
+    }
+
+    /**
+     * @param string $value
+     * @return Search
+     */
+    public static function eq(string $value): self
+    {
+        return new self($value);
     }
 
     /**

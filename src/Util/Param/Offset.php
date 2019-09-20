@@ -13,10 +13,19 @@ class Offset extends Param
      * Pagination constructor.
      * @param int $offset
      */
-    public function __construct(int $offset)
+    private function __construct(int $offset)
     {
         $this->offset = $offset;
         $this->type = self::OFFSET_PARAM;
+    }
+
+    /**
+     * @param int $offset
+     * @return Offset
+     */
+    public static function eq(int $offset): self
+    {
+        return new self($offset);
     }
 
     /**

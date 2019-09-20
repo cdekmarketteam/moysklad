@@ -13,10 +13,19 @@ class Limit extends Param
      * Pagination constructor.
      * @param int $limit
      */
-    public function __construct(int $limit)
+    private function __construct(int $limit)
     {
         $this->limit = $limit;
         $this->type = self::LIMIT_PARAM;
+    }
+
+    /**
+     * @param int $limit
+     * @return Limit
+     */
+    public static function eq(int $limit): self
+    {
+        return new self($limit);
     }
 
     /**
