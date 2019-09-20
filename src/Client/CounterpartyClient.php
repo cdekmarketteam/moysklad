@@ -3,8 +3,11 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
-use MoySklad\Client\Endpoint\GetByIdTrait;
-use MoySklad\Client\Endpoint\GetListTrait;
+use MoySklad\Client\Endpoint\DeleteByEndpoint;
+use MoySklad\Client\Endpoint\GetByEndpoint;
+use MoySklad\Client\Endpoint\GetListEndpoint;
+use MoySklad\Client\Endpoint\PostEndpoint;
+use MoySklad\Client\Endpoint\PutByEndpoint;
 use MoySklad\Entity\Account;
 use MoySklad\Entity\Agent\Counterparty;
 use MoySklad\Http\RequestExecutor;
@@ -13,7 +16,7 @@ use MoySklad\Util\Param\Param;
 
 class CounterpartyClient extends EntityClientBase
 {
-    use GetListTrait, GetByIdTrait;
+    use GetListEndpoint, GetByEndpoint, PutByEndpoint, PostEndpoint, DeleteByEndpoint;
 
     /**
      * CounterpartyClient constructor.
