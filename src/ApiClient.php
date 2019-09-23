@@ -14,22 +14,22 @@ class ApiClient
     /**
      * @var string
      */
-    private $host;
+    private $host = '';
 
     /**
      * @var string
      */
-    private $login;
+    private $login = '';
 
     /**
      * @var string
      */
-    private $password;
+    private $password = '';
 
     /**
      * @var string
      */
-    private $token;
+    private $token = '';
 
     /**
      * @var RequestSenderInterface
