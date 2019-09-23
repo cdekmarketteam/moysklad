@@ -177,8 +177,12 @@ final class RequestExecutor
      */
     private function auth(ApiClient $api): self
     {
-        $this->headers['Authorization'] = 'Basic '.base64_encode($api->getLogin().':'.$api->getPassword());
+        if ($api->getToken()) {
+            $this->headers['Authorization'] = 'Basic '.$api->getToken();
+            return $this;
+        }
 
+        $this->headers['Authorization'] = 'Basic '.base64_encode($api->getLogin().':'.$api->getPassword());
         return $this;
     }
 

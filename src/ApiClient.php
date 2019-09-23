@@ -27,6 +27,11 @@ class ApiClient
     private $password;
 
     /**
+     * @var string
+     */
+    private $token;
+
+    /**
      * @var RequestSenderInterface
      */
     private $client;
@@ -35,13 +40,16 @@ class ApiClient
      * ApiClient constructor.
      * @param string $host
      * @param bool $forceHttps
-     * @param string $login
-     * @param string $password
+     * @param array $credentials
      * @param RequestSenderInterface|null $client
      * @throws \Exception
      */
-    public function __construct(string $host, bool $forceHttps, string $login, string $password, RequestSenderInterface $client = null)
+    public function __construct(string $host, bool $forceHttps, array $credentials, RequestSenderInterface $client = null)
     {
+        if ($this->isInvalidCredentials($credentials)) {
+            throw new \Exception("Credential login, password or token must be set!");
+        }
+
         $host = trim($host);
         if ($host == null || empty($host)) {
             throw new \Exception("Host's address cannot be empty or null!");
@@ -65,17 +73,23 @@ class ApiClient
 
         $this->host = $host;
         $this->client = $client ?? new GuzzleRequestSender();
-        $this->setCredentials($login, $password);
+        $this->setCredentials($credentials);
     }
 
     /**
-     * @param string $login
-     * @param string $password
+     * @param array $credentials
+     * @throws \Exception
      */
-    public function setCredentials(string $login, string $password): void
+    public function setCredentials(array $credentials): void
     {
-        $this->login = $login;
-        $this->password = $password;
+        if (isset($credentials['token'])) {
+            $this->token = $credentials['token'];
+        } elseif (isset($credentials['login']) && isset($credentials['password'])) {
+            $this->login = $credentials['login'];
+            $this->password = $credentials['password'];
+        } else {
+            throw new \Exception("Credential login, password or token must be set!");
+        }
     }
 
     /**
@@ -124,5 +138,22 @@ class ApiClient
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param array $credentials
+     * @return bool
+     */
+    private function isInvalidCredentials(array $credentials): bool
+    {
+        return (!isset($credentials['login']) && !isset($credentials['password'])) && !isset($credentials['token']);
     }
 }
