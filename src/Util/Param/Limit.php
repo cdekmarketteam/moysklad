@@ -4,6 +4,9 @@ namespace MoySklad\Util\Param;
 
 class Limit extends Param
 {
+    private const MIN_LIMIT = 1;
+    private const MAX_LIMIT = 1000;
+
     /**
      * @var int
      */
@@ -15,6 +18,10 @@ class Limit extends Param
      */
     private function __construct(int $limit)
     {
+        if ($limit < self::MIN_LIMIT || $limit > self::MAX_LIMIT) {
+            throw new \InvalidArgumentException('Allowed values range 1 - 1000');
+        }
+
         $this->limit = $limit;
         $this->type = self::LIMIT_PARAM;
     }
