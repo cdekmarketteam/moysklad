@@ -10,6 +10,7 @@ use MoySklad\Client\Endpoint\PostEndpoint;
 use MoySklad\Client\Endpoint\PutByEndpoint;
 use MoySklad\Entity\Account;
 use MoySklad\Entity\Agent\Counterparty;
+use MoySklad\Entity\ListEntity;
 use MoySklad\Http\RequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;
 use MoySklad\Util\Param\Param;
@@ -25,6 +26,20 @@ class CounterpartyClient extends EntityClientBase
     public function __construct(ApiClient $api)
     {
         parent::__construct($api, '/entity/counterparty/');
+    }
+
+    /**
+     * @param string $counterpartyId
+     * @param Param[] $params
+     * @return ListEntity
+     * @throws ApiClientException
+     */
+    public function getAccountsList(string $counterpartyId, array $params = []): ListEntity
+    {
+        /** @var $listEntity ListEntity */
+        $listEntity = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts')->params($params)->get(ListEntity::class);
+
+        return $listEntity;
     }
 
     /**

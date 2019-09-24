@@ -100,8 +100,8 @@ $product = $api->entity()->product()->editById($product->id, $product);
 ```
 
 #### 2.4. Вложенные сущности
-Работа с вложенными сущностями производится при помощи специальных методов клиентов сущностей 
-(например, метод получения аккаунтов или аккаунта контрагента:
+Работа с вложенными сущностями производится при помощи специальных методов клиентов сущностей. 
+Например, метод получения аккаунтов или аккаунта контрагента:
 ```php
 $counterpartyAccountsList = $api->entity()->counterparty()->getAccountsList('counterparty_id');
 
@@ -109,6 +109,18 @@ $counterpartyAccount = $api->entity()->counterparty()->getAccount('counterparty_
 
 ```
 Полностью аналогично производится работа с остальными методами. 
+
+В некоторых сущностях имеются свойства - вложенные сущности (например у контрагента есть полный адрес), 
+такие вложенные сущности, как полный адрес, при ответе с API заполняются только метаданными, 
+для того чтобы заполнить ее основные свойства необходимо вызвать метод fetch():
+```php
+$counterparty = $api->entity()->counterparty()->getById('id');
+$addressCity = $counterparty->legalAddressFull->city; // null
+
+$counterparty->legalAddressFull->fetch();
+$addressCity = $counterparty->legalAddressFull->city; // название города
+
+```
 
 ## Дальнейшее знакомство
 Список доступных в Remap API 1.2 методов и сущностей, 
