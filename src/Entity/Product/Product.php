@@ -172,12 +172,12 @@ class Product extends AbstractProduct
     public $salePrices = [];
 
     /**
-     * @Type("array<MoySklad\Entity\MetaEntity>") //@todo create Pack entity
+     * @Type("array<MoySklad\Entity\Pack>")
      */
     public $packs = [];
 
     /**
-     * @Type("array<MoySklad\Entity\MetaEntity>") //@todo create Barcode entity
+     * @Type("array<MoySklad\Entity\Barcode>")
      */
     public $barcodes = [];
 

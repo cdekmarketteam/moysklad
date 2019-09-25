@@ -37,6 +37,7 @@ class SerializerInstance
             )->
             configureHandlers(function (HandlerRegistry $registry) {
                 $registry->registerHandler(self::DIRECTION['deserialization'], 'MoySklad\Entity\MetaEntity', 'json', new MetaEntityDeserializeHandler());
+                $registry->registerHandler(self::DIRECTION['deserialization'], 'MoySklad\Entity\Barcode', 'json', new BarcodeDeserializeHandler());
             })->
             addDefaultHandlers()->
             build();
