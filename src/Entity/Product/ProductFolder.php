@@ -1,19 +1,16 @@
 <?php
 
-namespace MoySklad\Entity;
+namespace MoySklad\Entity\Product;
 
+use MoySklad\Entity\MetaEntity;
 use JMS\Serializer\Annotation\Type;
 
 class ProductFolder extends MetaEntity
 {
-    public const TAX_SYSTEM = [
-        'GENERAL_TAX_SYSTEM' => 'ОСН',
-        'SIMPLIFIED_TAX_SYSTEM_INCOME' => 'УСН. Доход',
-        'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME' => 'УСН. Доход-Расход',
-        'UNIFIED_AGRICULTURAL_TAX' => 'ЕСХН',
-        'PRESUMPTIVE_TAX_SYSTEM' => 'ЕНВД',
-        'PATENT_BASED' => 'Патент',
-    ];
+    /**
+     * @Type("string")
+     */
+    private $taxSystem;
 
     /**
      * @Type("string")
@@ -39,11 +36,6 @@ class ProductFolder extends MetaEntity
      * @Type("string")
      */
     public $externalCode;
-
-    /**
-     * @Type("string")
-     */
-    private $taxSystem;
 
     /**
      * @Type("int")
@@ -81,7 +73,7 @@ class ProductFolder extends MetaEntity
     public $group;
 
     /**
-     * @Type("MoySklad\Entity\Agent\ProductFolder")
+     * @Type("MoySklad\Entity\Product\ProductFolder")
      */
     public $productFolder;
 
@@ -90,6 +82,6 @@ class ProductFolder extends MetaEntity
      */
     public function getTaxSystem(): string
     {
-        return self::TAX_SYSTEM[$this->taxSystem];
+        return AbstractProduct::TAX_SYSTEMS[$this->taxSystem];
     }
 }

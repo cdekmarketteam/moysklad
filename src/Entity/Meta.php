@@ -22,7 +22,7 @@ final class Meta
         'image' => Image::class,
         'pricetype' => PriceType::class,
         'region' => Region::class,
-        'productfolder' => ProductFolder::class,
+        'productfolder' => Product\ProductFolder::class,
         'state' => State::class,
     ];
 

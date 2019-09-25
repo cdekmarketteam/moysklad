@@ -7,7 +7,7 @@ use JMS\Serializer\Annotation\Type;
 class AccumulationDiscount extends BonusProgram
 {
     /**
-     * @Type("array<MoySklad\Entity\ProductFolder>")
+     * @Type("array<MoySklad\Entity\Product\ProductFolder>")
      */
     public $productFolders = [];
 
