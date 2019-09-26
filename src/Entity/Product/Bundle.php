@@ -4,7 +4,7 @@ namespace MoySklad\Entity\Product;
 
 use JMS\Serializer\Annotation\Type;
 
-class Product extends AbstractProduct
+class Bundle extends AbstractProduct
 {
     /**
      * @Type("string")
@@ -15,11 +15,6 @@ class Product extends AbstractProduct
      * @Type("string")
      */
     private $trackingType;
-
-    /**
-     * @Type("string")
-     */
-    public $syncId;
 
     /**
      * @Type("string")
@@ -42,54 +37,14 @@ class Product extends AbstractProduct
     public $volume;
 
     /**
-     * @Type("int")
+     * @Type("string")
      */
-    public $minimumBalance;
-
-    /**
-     * @Type("int")
-     */
-    public $variantsCount;
-
-    /**
-     * @Type("bool")
-     */
-    public $tobacco;
-
-    /**
-     * @Type("bool")
-     */
-    public $weighed;
-
-    /**
-     * @Type("bool")
-     */
-    public $isSerialTrackable;
+    public $syncId;
 
     /**
      * @Type("array")
      */
     public $attributes = [];
-
-    /**
-     * @Type("array")
-     */
-    public $things = [];
-
-    /**
-     * @Type("MoySklad\Entity\Agent\Counterparty")
-     */
-    public $supplier;
-
-    /**
-     * @Type("MoySklad\Entity\Country")
-     */
-    public $country;
-
-    /**
-     * @Type("MoySklad\Entity\Product\Alcoholic")
-     */
-    public $alcoholic;
 
     /**
      * @Type("MoySklad\Entity\Uom")
@@ -99,12 +54,27 @@ class Product extends AbstractProduct
     /**
      * @Type("MoySklad\Entity\Price")
      */
-    public $buyPrice;
+    public $minPrice;
 
     /**
      * @Type("MoySklad\Entity\Price")
      */
-    public $minPrice;
+    public $overhead;
+
+    /**
+     * @Type("MoySklad\Entity\Country")
+     */
+    public $country;
+
+    /**
+     * @Type("MoySklad\Entity\ListEntity")
+     */
+    public $components;
+
+    /**
+     * @Type("array<MoySklad\Entity\Image>")
+     */
+    public $images = [];
 
     /**
      * @Type("array<MoySklad\Entity\Price>")
@@ -115,16 +85,6 @@ class Product extends AbstractProduct
      * @Type("array<MoySklad\Entity\Barcode>")
      */
     public $barcodes = [];
-
-    /**
-     * @Type("array<MoySklad\Entity\Pack>")
-     */
-    public $packs = [];
-
-    /**
-     * @Type("array<MoySklad\Entity\Image>")
-     */
-    public $images = [];
 
     /**
      * @return string

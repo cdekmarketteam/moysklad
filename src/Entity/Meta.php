@@ -10,20 +10,27 @@ final class Meta
         'counterparty' => Agent\Counterparty::class,
         'employee' => Agent\Employee::class,
         'organization' => Agent\Organization::class,
+
         'bonusprogram' => Discount\BonusProgram::class,
+
+        'bundle' => Product\Bundle::class,
+        'product' => Product\Product::class,
+        'productfolder' => Product\ProductFolder::class,
+        'service' => Product\Service::class,
+
         'account' => Account::class,
-        'address' => Address::class,
         'cashier' => Cashier::class,
+        'component' => Component::class,
         'contactperson' => ContactPerson::class,
-        'context' => Context::class,
+        'currency' => Currency::class,
         'country' => Country::class,
-        'note' => Note::class,
         'group' => Group::class,
         'image' => Image::class,
+        'note' => Note::class,
         'pricetype' => PriceType::class,
         'region' => Region::class,
-        'productfolder' => Product\ProductFolder::class,
         'state' => State::class,
+        'uom' => Uom::class,
     ];
 
     /**
