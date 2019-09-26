@@ -20,7 +20,7 @@ final class Meta
 
         'account' => Account::class,
         'cashier' => Cashier::class,
-        'component' => Component::class,
+        'bundlecomponent' => Component::class,
         'contactperson' => ContactPerson::class,
         'currency' => Currency::class,
         'country' => Country::class,

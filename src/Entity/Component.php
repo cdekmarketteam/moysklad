@@ -12,7 +12,7 @@ class Component extends MetaEntity
     public $quantity;
 
     /**
-     * @Type("MoySklad\Entity\MetaEntity") //@todo create Assortment entity
+     * @Type("MoySklad\Entity\Assortment")
      */
     public $assortment;
 }
