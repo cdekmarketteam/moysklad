@@ -157,17 +157,17 @@ class Product extends AbstractProduct
     public $uom;
 
     /**
-     * @Type("MoySklad\Entity\MetaEntity") //@todo create Price entity
+     * @Type("MoySklad\Entity\Price")
      */
     public $minPrice;
 
     /**
-     * @Type("MoySklad\Entity\MetaEntity") //@todo create Price entity
+     * @Type("MoySklad\Entity\Price")
      */
     public $buyPrice;
 
     /**
-     * @Type("array<MoySklad\Entity\MetaEntity>") //@todo create Price entity
+     * @Type("array<MoySklad\Entity\Price>")
      */
     public $salePrices = [];
 

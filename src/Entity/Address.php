@@ -4,7 +4,7 @@ namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
 
-class Address extends MetaEntity
+class Address
 {
     /**
      * @Type("string")
