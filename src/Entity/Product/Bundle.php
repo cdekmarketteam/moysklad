@@ -42,7 +42,7 @@ class Bundle extends AbstractProduct
     public $syncId;
 
     /**
-     * @Type("array")
+     * @Type("array<MoySklad\Entity\Attribute>")
      */
     public $attributes = [];
 
@@ -72,7 +72,7 @@ class Bundle extends AbstractProduct
     public $components;
 
     /**
-     * @Type("array<MoySklad\Entity\Image>")
+     * @Type("array<MoySklad\Entity\ListEntity>")
      */
     public $images = [];
 

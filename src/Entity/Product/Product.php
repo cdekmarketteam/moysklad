@@ -67,7 +67,7 @@ class Product extends AbstractProduct
     public $isSerialTrackable;
 
     /**
-     * @Type("array")
+     * @Type("array<MoySklad\Entity\Attribute>")
      */
     public $attributes = [];
 
@@ -122,7 +122,7 @@ class Product extends AbstractProduct
     public $packs = [];
 
     /**
-     * @Type("array<MoySklad\Entity\Image>")
+     * @Type("array<MoySklad\Entity\ListEntity>")
      */
     public $images = [];
 

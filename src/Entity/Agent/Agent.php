@@ -58,7 +58,7 @@ abstract class Agent extends MetaEntity
     public $archived;
 
     /**
-     * @Type("array")
+     * @Type("array<MoySklad\Entity\Attribute>")
      */
     public $attributes = [];
 

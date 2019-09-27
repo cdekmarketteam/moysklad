@@ -17,7 +17,7 @@ class Service extends AbstractProduct
     public $syncId;
 
     /**
-     * @Type("array")
+     * @Type("array<MoySklad\Entity\Attribute>")
      */
     public $attributes = [];
 

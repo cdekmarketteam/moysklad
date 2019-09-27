@@ -4,7 +4,7 @@ namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
 
-class Barcode
+class Barcode //@todo create serializer
 {
     /**
      * @Type("string")
