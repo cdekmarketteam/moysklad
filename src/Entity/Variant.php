@@ -37,7 +37,7 @@ class Variant extends MetaEntity
     public $things = [];
 
     /**
-     * @Type(MoySklad\Entity\Product\Product")
+     * @Type("MoySklad\Entity\Product\Product")
      */
     public $product;
 
@@ -52,7 +52,7 @@ class Variant extends MetaEntity
     public $buyPrice;
 
     /**
-     * @Type(MoySklad\Entity\ListEntity")
+     * @Type("MoySklad\Entity\ListEntity")
      */
     public $images;
 
