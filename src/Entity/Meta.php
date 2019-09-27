@@ -20,10 +20,11 @@ final class Meta
 
         'account' => Account::class,
         'cashier' => Cashier::class,
+        'consignment' => Consignment::class,
         'bundlecomponent' => Component::class,
         'contactperson' => ContactPerson::class,
-        'currency' => Currency::class,
         'country' => Country::class,
+        'currency' => Currency::class,
         'group' => Group::class,
         'image' => Image::class,
         'note' => Note::class,
@@ -31,6 +32,7 @@ final class Meta
         'region' => Region::class,
         'state' => State::class,
         'uom' => Uom::class,
+        'variant' => Variant::class,
     ];
 
     /**
