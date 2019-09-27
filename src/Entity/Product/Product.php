@@ -124,7 +124,7 @@ class Product extends AbstractProduct
     /**
      * @Type("MoySklad\Entity\ListEntity")
      */
-    public $images = [];
+    public $images;
 
     /**
      * @return string
