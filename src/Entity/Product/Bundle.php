@@ -72,7 +72,7 @@ class Bundle extends AbstractProduct
     public $components;
 
     /**
-     * @Type("array<MoySklad\Entity\ListEntity>")
+     * @Type("MoySklad\Entity\ListEntity")
      */
     public $images = [];
 

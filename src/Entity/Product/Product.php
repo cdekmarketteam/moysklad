@@ -122,7 +122,7 @@ class Product extends AbstractProduct
     public $packs = [];
 
     /**
-     * @Type("array<MoySklad\Entity\ListEntity>")
+     * @Type("MoySklad\Entity\ListEntity")
      */
     public $images = [];
 

@@ -112,6 +112,6 @@ abstract class AbstractProduct extends MetaEntity
      */
     public function getTaxSystem(): string
     {
-        return self::TAX_SYSTEMS[$this->taxSystem];
+        return isset(self::TAX_SYSTEMS[$this->taxSystem]) ? self::TAX_SYSTEMS[$this->taxSystem] : '';
     }
 }
