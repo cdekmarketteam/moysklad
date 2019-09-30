@@ -35,6 +35,7 @@ final class Meta
         'project' => Project::class,
         'region' => Region::class,
         'state' => State::class,
+        'store' => Store::class,
         'uom' => Uom::class,
         'variant' => Variant::class,
     ];
