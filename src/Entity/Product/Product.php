@@ -72,7 +72,7 @@ class Product extends AbstractProduct
     public $attributes = [];
 
     /**
-     * @Type("array")
+     * @Type("array<string>")
      */
     public $things = [];
 

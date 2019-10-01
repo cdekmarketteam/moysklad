@@ -1,11 +1,21 @@
 <?php
 
-namespace MoySklad\Entity;
+namespace MoySklad\Entity\Store;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Entity\MetaEntity;
 
-class Store extends MetaEntity
+abstract class AbstractStore extends MetaEntity
 {
+    protected const TAX_SYSTEMS = [
+        'GENERAL_TAX_SYSTEM' => 'ОСН',
+        'SIMPLIFIED_TAX_SYSTEM_INCOME' => 'УСН. Доход',
+        'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME' => 'УСН. Доход-Расход',
+        'UNIFIED_AGRICULTURAL_TAX' => 'ЕСХН',
+        'PRESUMPTIVE_TAX_SYSTEM' => 'ЕНВД',
+        'PATENT_BASED' => 'Патент',
+    ];
+
     /**
      * @Type("string")
      */
@@ -19,22 +29,12 @@ class Store extends MetaEntity
     /**
      * @Type("string")
      */
-    public $code;
-
-    /**
-     * @Type("string")
-     */
     public $externalCode;
 
     /**
      * @Type("string")
      */
     public $address;
-
-    /**
-     * @Type("string")
-     */
-    public $pathName;
 
     /**
      * @Type("bool")
@@ -65,14 +65,4 @@ class Store extends MetaEntity
      * @Type("MoySklad\Entity\Address")
      */
     public $addressFull;
-
-    /**
-     * @Type("MoySklad\Entity\Store")
-     */
-    public $parent;
-
-    /**
-     * @Type("array<MoySklad\Entity\Attribute>")
-     */
-    public $attributes = [];
 }

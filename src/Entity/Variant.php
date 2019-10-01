@@ -32,7 +32,7 @@ class Variant extends MetaEntity
     public $updated;
 
     /**
-     * @Type("array")
+     * @Type("array<string>")
      */
     public $things = [];
 

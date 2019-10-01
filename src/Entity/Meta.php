@@ -18,6 +18,9 @@ final class Meta
         'productfolder' => Product\ProductFolder::class,
         'service' => Product\Service::class,
 
+        'store' => Store\Store::class,
+        'retailstore' => Store\RetailStore::class,
+
         'account' => Account::class,
         'bundlecomponent' => Component::class,
         'cashier' => Cashier::class,
@@ -35,7 +38,6 @@ final class Meta
         'project' => Project::class,
         'region' => Region::class,
         'state' => State::class,
-        'store' => Store::class,
         'uom' => Uom::class,
         'variant' => Variant::class,
     ];

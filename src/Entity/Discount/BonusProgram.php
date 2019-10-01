@@ -23,7 +23,7 @@ class BonusProgram extends MetaEntity
     public $allProducts;
 
     /**
-     * @Type("array")
+     * @Type("array<string>")
      */
     public $agentTags = [];
 

@@ -83,7 +83,7 @@ class Counterparty extends MetaEntity
     public $bonusPoints;
 
     /**
-     * @Type("array")
+     * @Type("array<string>")
      */
     public $tags = [];
 
