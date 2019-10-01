@@ -2,31 +2,10 @@
 
 namespace MoySklad\Entity\Discount;
 
-use MoySklad\Entity\MetaEntity;
 use JMS\Serializer\Annotation\Type;
 
-class BonusProgram extends MetaEntity
+class BonusProgram extends Discount
 {
-    /**
-     * @Type("string")
-     */
-    public $name;
-
-    /**
-     * @Type("bool")
-     */
-    public $active;
-
-    /**
-     * @Type("bool")
-     */
-    public $allProducts;
-
-    /**
-     * @Type("array<string>")
-     */
-    public $agentTags = [];
-
     /**
      * @Type("int")
      */

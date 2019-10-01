@@ -11,6 +11,7 @@ final class Meta
         'employee' => Agent\Employee::class,
         'organization' => Agent\Organization::class,
 
+        'discount' => Discount\Discount::class,
         'bonusprogram' => Discount\BonusProgram::class,
 
         'bundle' => Product\Bundle::class,

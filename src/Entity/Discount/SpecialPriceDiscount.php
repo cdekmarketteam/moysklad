@@ -4,12 +4,17 @@ namespace MoySklad\Entity\Discount;
 
 use JMS\Serializer\Annotation\Type;
 
-class AccumulationDiscount extends Discount
+class SpecialPriceDiscount extends Discount
 {
     /**
-     * @Type("array<MoySklad\Entity\Discount\Level>")
+     * @Type("int")
      */
-    public $levels = [];
+    public $discount;
+
+    /**
+     * @Type("MoySklad\Entity\Discount\SpecialPrice")
+     */
+    public $specialPrice;
 
     /**
      * @Type("array<MoySklad\Entity\Product\ProductFolder>")

@@ -4,15 +4,15 @@ namespace MoySklad\Entity\Discount;
 
 use JMS\Serializer\Annotation\Type;
 
-class AccumulationLevel
+class SpecialPrice
 {
     /**
      * @Type("int")
      */
-    public $amount;
+    public $value;
 
     /**
-     * @Type("int")
+     * @Type("MoySklad\Entity\PriceType")
      */
-    public $discount;
+    public $priceType;
 }
