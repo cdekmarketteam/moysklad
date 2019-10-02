@@ -13,6 +13,7 @@ final class Meta
 
         'discount' => Discount\Discount::class,
         'bonusprogram' => Discount\BonusProgram::class,
+        'bonustransaction' => Discount\BonusTransaction::class,
 
         'bundle' => Product\Bundle::class,
         'product' => Product\Product::class,
