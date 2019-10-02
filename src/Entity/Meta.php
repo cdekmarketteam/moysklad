@@ -42,6 +42,8 @@ final class Meta
         'project' => Project::class,
         'region' => Region::class,
         'state' => State::class,
+        'task' => Task::class,
+        'tasknote' => TaskNote::class,
         'uom' => Uom::class,
         'variant' => Variant::class,
         'webhook' => WebHook::class,
