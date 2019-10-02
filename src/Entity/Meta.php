@@ -22,6 +22,9 @@ final class Meta
         'store' => Store\Store::class,
         'retailstore' => Store\RetailStore::class,
 
+        'embeddedtemplate' => Template\EmbeddedTemplate::class,
+        'customtemplate' => Template\CustomTemplate::class,
+
         'account' => Account::class,
         'bundlecomponent' => Component::class,
         'cashier' => Cashier::class,
@@ -41,6 +44,7 @@ final class Meta
         'state' => State::class,
         'uom' => Uom::class,
         'variant' => Variant::class,
+        'webhook' => WebHook::class,
     ];
 
     /**
