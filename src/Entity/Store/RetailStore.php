@@ -182,12 +182,12 @@ class RetailStore extends AbstractStore
     public $productFolders;
 
     /**
-     * @Type("MoySklad\Entity\Store\LastOperationName")
+     * @Type("array<MoySklad\Entity\Store\LastOperationName>")
      */
     public $lastOperationNames = [];
 
     /**
-     * @Type("MoySklad\Entity\State")
+     * @Type("array<MoySklad\Entity\State>")
      */
     public $customerOrderStates = [];
 
