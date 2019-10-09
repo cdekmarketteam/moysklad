@@ -3,7 +3,7 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
-use MoySklad\Client\Endpoint\GetListEndpoint;
+use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
 use MoySklad\Entity\Image;
 use MoySklad\Entity\ListEntity;
 use MoySklad\Entity\Product\Product;
@@ -13,7 +13,7 @@ use MoySklad\Util\Param\Param;
 
 class ProductClient extends EntityClientBase
 {
-    use GetListEndpoint;
+    use GetEntitiesListEndpoint;
 
     /**
      * ProductClient constructor.
@@ -41,18 +41,30 @@ class ProductClient extends EntityClientBase
     /**
      * @param string $productId
      * @param Image $image
-     * @return Image
+     * @return Image[]
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function addImage(string $productId, Image $image): Image
+    public function createImage(string $productId, Image $image): array
     {
         $className = Image::class;
 
-        /** @var Image $image */
-        $image = RequestExecutor::path($this->getApi(), $this->getPath().$productId.'/images')->body($image)->post("array<{$className}>");
+        /** @var Image[] $images */
+        $images = RequestExecutor::path($this->getApi(), $this->getPath().$productId.'/images')->body($image)->post("array<{$className}>");
 
-        return $image;
+        return $images;
+    }
+
+    /**
+     * @param string $productId
+     * @param Image[] $images
+     * @return Image[]
+     * @throws ApiClientException
+     * @throws \Exception
+     */
+    public function massUpdateImages(string $productId, array $images): array
+    {
+        return RequestExecutor::path($this->getApi(), $this->getPath().$productId.'/images')->bodyArray($images)->post("array<{$this->getMetaEntityClass()}>");
     }
 
     /**
@@ -60,19 +72,9 @@ class ProductClient extends EntityClientBase
      * @param string $imageId
      * @throws ApiClientException
      */
-    public function deleteImageById(string $productId, string $imageId): void
+    public function deleteImage(string $productId, string $imageId): void
     {
         RequestExecutor::path($this->getApi(), $this->getPath().$productId.'/images/'.$imageId)->delete();
-    }
-
-    /**
-     * @param string $productId
-     * @param Image $image
-     * @throws ApiClientException
-     */
-    public function deleteImageByEntity(string $productId, Image $image): void
-    {
-        $this->deleteImageById($productId, $image->id);
     }
 
     /**

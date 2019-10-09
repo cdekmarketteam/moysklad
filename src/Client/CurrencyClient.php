@@ -3,21 +3,23 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
-use MoySklad\Client\Endpoint\DeleteByEndpoint;
-use MoySklad\Client\Endpoint\GetByEndpoint;
-use MoySklad\Client\Endpoint\GetListEndpoint;
-use MoySklad\Client\Endpoint\PostEndpoint;
-use MoySklad\Client\Endpoint\PutByEndpoint;
+use MoySklad\Client\Endpoint\DeleteEntityEndpoint;
+use MoySklad\Client\Endpoint\GetEntityEndpoint;
+use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
+use MoySklad\Client\Endpoint\PostEntitiesEndpoint;
+use MoySklad\Client\Endpoint\PostEntityEndpoint;
+use MoySklad\Client\Endpoint\PutEntityEndpoint;
 use MoySklad\Entity\Currency;
 
 class CurrencyClient extends EntityClientBase
 {
     use
-        GetListEndpoint,
-        GetByEndpoint,
-        PutByEndpoint,
-        PostEndpoint,
-        DeleteByEndpoint;
+        GetEntitiesListEndpoint,
+        GetEntityEndpoint,
+        PutEntityEndpoint,
+        PostEntityEndpoint,
+        DeleteEntityEndpoint,
+        PostEntitiesEndpoint;
 
     /**
      * CurrencyClient constructor.

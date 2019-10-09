@@ -7,29 +7,19 @@ use MoySklad\Entity\MetaEntity;
 use MoySklad\Http\RequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;
 
-trait DeleteByEndpoint
+trait DeleteEntityEndpoint
 {
     /**
      * @param string $id
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function deleteById(string $id): void
+    public function delete(string $id): void
     {
         if (get_parent_class($this) !== EntityClientBase::class) {
             throw new \Exception('The trait cannot be used outside the EntityClientBase class');
         }
 
         RequestExecutor::path($this->getApi(), $this->getPath().$id)->delete();
-    }
-
-    /**
-     * @param MetaEntity $entity
-     * @throws ApiClientException
-     * @throws \Exception
-     */
-    public function deleteByEntity(MetaEntity $entity): void
-    {
-        $this->deleteById($entity->id);
     }
 }

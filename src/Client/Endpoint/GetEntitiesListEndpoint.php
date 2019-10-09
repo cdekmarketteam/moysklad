@@ -3,25 +3,28 @@
 namespace MoySklad\Client\Endpoint;
 
 use MoySklad\Client\EntityClientBase;
-use MoySklad\Entity\Attribute;
-use MoySklad\Entity\MetaEntity;
+use MoySklad\Entity\ListEntity;
 use MoySklad\Http\RequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;
+use MoySklad\Util\Param\Param;
 
-trait GetMetadataAttributeEndpoint
+trait GetEntitiesListEndpoint
 {
     /**
-     * @param string $id
-     * @return MetaEntity
+     * @param Param[] $params
+     * @return ListEntity
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function getMetadataAttribute(string $id): MetaEntity
+    public function getList(array $params = []): ListEntity
     {
         if (get_parent_class($this) !== EntityClientBase::class) {
             throw new \Exception('The trait cannot be used outside the EntityClientBase class');
         }
 
-        return RequestExecutor::path($this->getApi(), $this->getPath().'metadata/attributes/'.$id)->get(Attribute::class);
+        /** @var $listEntity ListEntity */
+        $listEntity = RequestExecutor::path($this->getApi(), $this->getPath())->params($params)->get(ListEntity::class);
+
+        return $listEntity;
     }
 }

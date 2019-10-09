@@ -243,10 +243,10 @@ final class RequestExecutor
 
     /**
      * @param string $className
-     * @return MetaEntity
+     * @return MetaEntity|MetaEntity[]
      * @throws ApiClientException
      */
-    public function get(string $className): MetaEntity
+    public function get(string $className)
     {
         $request = new Request(self::METHOD_GET, $this->buildFullUrl(), $this->headers);
 
@@ -255,10 +255,10 @@ final class RequestExecutor
 
     /**
      * @param string $className
-     * @return MetaEntity
+     * @return MetaEntity|MetaEntity[]
      * @throws ApiClientException
      */
-    public function post(string $className): MetaEntity
+    public function post(string $className)
     {
         $strBody = null;
         if (!is_null($this->body)) {

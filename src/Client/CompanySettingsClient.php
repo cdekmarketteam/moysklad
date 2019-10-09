@@ -34,11 +34,11 @@ class CompanySettingsClient extends EntityClientBase
     }
 
     /**
-     * @param array $priceTypes
-     * @return array
+     * @param PriceType[] $priceTypes
+     * @return PriceType[]
      * @throws ApiClientException
      */
-    public function editPriceTypes(array $priceTypes): array
+    public function massUpdatePriceTypes(array $priceTypes): array
     {
         $className = PriceType::class;
 
@@ -53,22 +53,12 @@ class CompanySettingsClient extends EntityClientBase
      * @return PriceType
      * @throws ApiClientException
      */
-    public function getPriceTypeById(string $priceTypeId): PriceType
+    public function getPriceType(string $priceTypeId): PriceType
     {
         /** @var PriceType $priceType */
         $priceType = RequestExecutor::path($this->getApi(), $this->getPath().'pricetype/'.$priceTypeId)->get(PriceType::class);
 
         return $priceType;
-    }
-
-    /**
-     * @param PriceType $priceType
-     * @return PriceType
-     * @throws ApiClientException
-     */
-    public function getPriceTypeByEntity(PriceType $priceType): PriceType
-    {
-        return $this->getPriceTypeById($priceType->id);
     }
 
     /**

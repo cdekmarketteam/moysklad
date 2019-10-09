@@ -7,7 +7,7 @@ use MoySklad\Entity\MetaEntity;
 use MoySklad\Http\RequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;
 
-trait PutByEndpoint
+trait PutEntityEndpoint
 {
     /**
      * @param string $id
@@ -16,23 +16,12 @@ trait PutByEndpoint
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function editById(string $id, MetaEntity $updatedEntity)
+    public function update(string $id, MetaEntity $updatedEntity): MetaEntity
     {
         if (get_parent_class($this) !== EntityClientBase::class) {
             throw new \Exception('The trait cannot be used outside the EntityClientBase class');
         }
 
         return RequestExecutor::path($this->getApi(), $this->getPath().$id)->body($updatedEntity)->put($this->getMetaEntityClass());
-    }
-
-    /**
-     * @param MetaEntity $updatedEntity
-     * @return MetaEntity
-     * @throws ApiClientException
-     * @throws \Exception
-     */
-    public function editByEntity(MetaEntity $updatedEntity)
-    {
-        return $this->editById($updatedEntity->id, $updatedEntity);
     }
 }

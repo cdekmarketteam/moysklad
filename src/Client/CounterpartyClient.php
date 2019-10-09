@@ -3,12 +3,13 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
-use MoySklad\Client\Endpoint\DeleteByEndpoint;
-use MoySklad\Client\Endpoint\GetByEndpoint;
-use MoySklad\Client\Endpoint\GetListEndpoint;
+use MoySklad\Client\Endpoint\DeleteEntityEndpoint;
+use MoySklad\Client\Endpoint\GetEntityEndpoint;
+use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
 use MoySklad\Client\Endpoint\GetMetadataAttributeEndpoint;
-use MoySklad\Client\Endpoint\PostEndpoint;
-use MoySklad\Client\Endpoint\PutByEndpoint;
+use MoySklad\Client\Endpoint\PostEntitiesEndpoint;
+use MoySklad\Client\Endpoint\PostEntityEndpoint;
+use MoySklad\Client\Endpoint\PutEntityEndpoint;
 use MoySklad\Entity\Account;
 use MoySklad\Entity\Agent\Counterparty;
 use MoySklad\Entity\ContactPerson;
@@ -23,12 +24,13 @@ use MoySklad\Util\Param\Param;
 class CounterpartyClient extends EntityClientBase
 {
     use
-        GetListEndpoint,
-        GetByEndpoint,
-        PutByEndpoint,
-        PostEndpoint,
-        DeleteByEndpoint,
-        GetMetadataAttributeEndpoint;
+        GetEntitiesListEndpoint,
+        GetEntityEndpoint,
+        PutEntityEndpoint,
+        PostEntityEndpoint,
+        DeleteEntityEndpoint,
+        GetMetadataAttributeEndpoint,
+        PostEntitiesEndpoint;
 
     /**
      * CounterpartyClient constructor.
@@ -56,14 +58,13 @@ class CounterpartyClient extends EntityClientBase
     /**
      * @param string $counterpartyId
      * @param string $accountId
-     * @param Param[] $params
      * @return Account
      * @throws ApiClientException
      */
-    public function getAccount(string $counterpartyId, string $accountId, array $params = []): Account
+    public function getAccount(string $counterpartyId, string $accountId): Account
     {
         /** @var $account Account */
-        $account = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts/'.$accountId)->params($params)->get(Account::class);
+        $account = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/accounts/'.$accountId)->get(Account::class);
 
         return $account;
     }
@@ -97,31 +98,30 @@ class CounterpartyClient extends EntityClientBase
     /**
      * @param string $counterpartyId
      * @param ContactPerson $contactPerson
-     * @return ContactPerson
+     * @return ContactPerson[]
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function createContactPerson(string $counterpartyId, ContactPerson $contactPerson): ContactPerson
+    public function createContactPerson(string $counterpartyId, ContactPerson $contactPerson): array
     {
         $className = ContactPerson::class;
 
-        /** @var ContactPerson $contactPerson */
-        $contactPerson = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/contactpersons')->body($contactPerson)->post("array<{$className}>");
+        /** @var ContactPerson[] $contactPersons */
+        $contactPersons = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/contactpersons')->body($contactPerson)->post("array<{$className}>");
 
-        return $contactPerson;
+        return $contactPersons;
     }
 
     /**
      * @param string $counterpartyId
      * @param string $contactPersonId
-     * @param Param[] $params
      * @return ContactPerson
      * @throws ApiClientException
      */
-    public function getContactPerson(string $counterpartyId, string $contactPersonId, array $params = []): ContactPerson
+    public function getContactPerson(string $counterpartyId, string $contactPersonId): ContactPerson
     {
         /** @var ContactPerson $contactPerson */
-        $contactPerson = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/contactpersons/'.$contactPersonId)->params($params)->get(ContactPerson::class);
+        $contactPerson = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/contactpersons/'.$contactPersonId)->get(ContactPerson::class);
 
         return $contactPerson;
     }
@@ -133,7 +133,7 @@ class CounterpartyClient extends EntityClientBase
      * @return ContactPerson
      * @throws ApiClientException
      */
-    public function editContactPerson(string $counterpartyId, string $contactPersonId, ContactPerson $updatedContactPerson): ContactPerson
+    public function updateContactPerson(string $counterpartyId, string $contactPersonId, ContactPerson $updatedContactPerson): ContactPerson
     {
         /** @var ContactPerson $contactPerson */
         $contactPerson = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/contactpersons/'.$contactPersonId)->body($updatedContactPerson)->put(ContactPerson::class);
@@ -158,31 +158,30 @@ class CounterpartyClient extends EntityClientBase
     /**
      * @param string $counterpartyId
      * @param Note $note
-     * @return Note
+     * @return Note[]
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function createNote(string $counterpartyId, Note $note): Note
+    public function createNote(string $counterpartyId, Note $note): array
     {
         $className = Note::class;
 
-        /** @var Note $note */
-        $note = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes')->body($note)->post("array<{$className}>");
+        /** @var Note[] $notes */
+        $notes = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes')->body($note)->post("array<{$className}>");
 
-        return $note;
+        return $notes;
     }
 
     /**
      * @param string $counterpartyId
      * @param string $noteId
-     * @param Param[] $params
      * @return Note
      * @throws ApiClientException
      */
-    public function getNote(string $counterpartyId, string $noteId, array $params = []): Note
+    public function getNote(string $counterpartyId, string $noteId): Note
     {
         /** @var Note $note */
-        $note = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes/'.$noteId)->params($params)->get(Note::class);
+        $note = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes/'.$noteId)->get(Note::class);
 
         return $note;
     }
@@ -194,7 +193,7 @@ class CounterpartyClient extends EntityClientBase
      * @return Note
      * @throws ApiClientException
      */
-    public function editNote(string $counterpartyId, string $noteId, Note $updatedNote): Note
+    public function updateNote(string $counterpartyId, string $noteId, Note $updatedNote): Note
     {
         /** @var Note $note */
         $note = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes/'.$noteId)->body($updatedNote)->put(Note::class);
@@ -207,19 +206,9 @@ class CounterpartyClient extends EntityClientBase
      * @param string $noteId
      * @throws ApiClientException
      */
-    public function deleteNoteById(string $counterpartyId, string $noteId): void
+    public function deleteNote(string $counterpartyId, string $noteId): void
     {
         RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes/'.$noteId)->delete();
-    }
-
-    /**
-     * @param string $counterpartyId
-     * @param Note $note
-     * @throws ApiClientException
-     */
-    public function deleteNoteByEntity(string $counterpartyId, Note $note): void
-    {
-        $this->deleteNoteById($counterpartyId, $note->id);
     }
 
     /**

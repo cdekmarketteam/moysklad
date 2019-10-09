@@ -3,12 +3,12 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
-use MoySklad\Client\Endpoint\GetListEndpoint;
+use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
 use MoySklad\Entity\Product\ProductFolder;
 
 class ProductFolderClient extends EntityClientBase
 {
-    use GetListEndpoint;
+    use GetEntitiesListEndpoint;
 
     /**
      * ProductFolderClient constructor.
