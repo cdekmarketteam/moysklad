@@ -103,8 +103,10 @@ class CounterpartyClient extends EntityClientBase
      */
     public function createContactPerson(string $counterpartyId, ContactPerson $contactPerson): ContactPerson
     {
+        $className = ContactPerson::class;
+
         /** @var ContactPerson $contactPerson */
-        $contactPerson = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/contactpersons')->body($contactPerson)->post(ContactPerson::class);
+        $contactPerson = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/contactpersons')->body($contactPerson)->post("array<{$className}>");
 
         return $contactPerson;
     }
@@ -162,8 +164,10 @@ class CounterpartyClient extends EntityClientBase
      */
     public function createNote(string $counterpartyId, Note $note): Note
     {
+        $className = Note::class;
+
         /** @var Note $note */
-        $note = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes')->body($note)->post(Note::class);
+        $note = RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes')->body($note)->post("array<{$className}>");
 
         return $note;
     }
