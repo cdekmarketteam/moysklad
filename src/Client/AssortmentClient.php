@@ -3,12 +3,15 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
+use MoySklad\Client\Endpoint\DeleteEntitiesEndpoint;
 use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
 use MoySklad\Entity\Assortment;
 
 class AssortmentClient extends EntityClientBase
 {
-    use GetEntitiesListEndpoint;
+    use
+        GetEntitiesListEndpoint,
+        DeleteEntitiesEndpoint;
 
     /**
      * AssortmentClient constructor.
