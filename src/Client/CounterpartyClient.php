@@ -200,12 +200,22 @@ class CounterpartyClient extends EntityClientBase
 
     /**
      * @param string $counterpartyId
+     * @param string $noteId
+     * @throws ApiClientException
+     */
+    public function deleteNoteById(string $counterpartyId, string $noteId): void
+    {
+        RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes/'.$noteId)->delete();
+    }
+
+    /**
+     * @param string $counterpartyId
      * @param Note $note
      * @throws ApiClientException
      */
-    public function deleteNote(string $counterpartyId, Note $note): void
+    public function deleteNoteByEntity(string $counterpartyId, Note $note): void
     {
-        RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes/'.$note->id)->delete();
+        $this->deleteNoteById($counterpartyId, $note->id);
     }
 
     /**
