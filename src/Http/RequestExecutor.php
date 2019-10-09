@@ -51,7 +51,7 @@ final class RequestExecutor
     private $params = [];
 
     /**
-     * @var MetaEntity
+     * @var MetaEntity|MetaEntity[]
      */
     private $body = null;
 
@@ -156,6 +156,17 @@ final class RequestExecutor
         if (!is_null($this->params) && count($params) > 0) {
             $this->params = $params;
         }
+
+        return $this;
+    }
+
+    /**
+     * @param MetaEntity[] $body
+     * @return RequestExecutor
+     */
+    public function bodyArray(array $body): self
+    {
+        $this->body = $body;
 
         return $this;
     }
