@@ -72,15 +72,15 @@ class CounterpartyClient extends EntityClientBase
     }
 
     /**
-     * @return Metadata
+     * @return AdditionMetadata
      * @throws ApiClientException
      */
-    public function getMetadata(): Metadata
+    public function getMetadata(): AdditionMetadata
     {
-        /** @var $metadata AdditionMetadata */
-        $metadata = RequestExecutor::path($this->getApi(), $this->getPath().'metadata')->get(AdditionMetadata::class);
+        /** @var $additionMetadata AdditionMetadata */
+        $additionMetadata = RequestExecutor::path($this->getApi(), $this->getPath().'metadata')->get(AdditionMetadata::class);
 
-        return $metadata;
+        return $additionMetadata;
     }
 
     /**
