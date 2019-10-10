@@ -17,6 +17,7 @@ use MoySklad\Entity\ContactPerson;
 use MoySklad\Entity\ListEntity;
 use MoySklad\Entity\Metadata\AdditionMetadata;
 use MoySklad\Entity\Note;
+use MoySklad\Entity\State;
 use MoySklad\Http\RequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;
 use MoySklad\Util\Param\Param;
@@ -210,6 +211,44 @@ class CounterpartyClient extends EntityClientBase
     public function deleteNote(string $counterpartyId, string $noteId): void
     {
         RequestExecutor::path($this->getApi(), $this->getPath().$counterpartyId.'/notes/'.$noteId)->delete();
+    }
+
+    /**
+     * @param State $state
+     * @return State
+     * @throws ApiClientException
+     * @throws \Exception
+     */
+    public function createState(State $state): State
+    {
+        /** @var State $state */
+        $state = RequestExecutor::path($this->getApi(), $this->getPath().'metadata/states')->body($state)->post(State::class);
+
+        return $state;
+    }
+
+    /**
+     * @param string $stateId
+     * @param State $updatedState
+     * @return State
+     * @throws ApiClientException
+     * @throws \Exception
+     */
+    public function updateState(string $stateId, State $updatedState): State
+    {
+        /** @var State $state */
+        $state = RequestExecutor::path($this->getApi(), $this->getPath().'metadata/states/'.$stateId)->body($updatedState)->put(State::class);
+
+        return $state;
+    }
+
+    /**
+     * @param string $stateId
+     * @throws ApiClientException
+     */
+    public function deleteState(string $stateId): void
+    {
+        RequestExecutor::path($this->getApi(), $this->getPath().'/metadata/states/'.$stateId)->delete();
     }
 
     /**
