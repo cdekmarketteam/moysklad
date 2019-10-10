@@ -49,7 +49,7 @@ class CustomEntityClient extends EntityClientBase
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function addSubCustomEntity(string $customEntityId, CustomEntity $subCustomEntity): CustomEntity
+    public function createSubCustomEntity(string $customEntityId, CustomEntity $subCustomEntity): CustomEntity
     {
         /** @var CustomEntity $subCustomEntity */
         $subCustomEntity = RequestExecutor::path($this->getApi(), $this->getPath().$customEntityId)->body($subCustomEntity)->post(CustomEntity::class);
