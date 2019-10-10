@@ -3,12 +3,19 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
+use MoySklad\Client\Endpoint\DeleteEntitiesEndpoint;
+use MoySklad\Client\Endpoint\DeleteEntityEndpoint;
 use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
+use MoySklad\Client\Endpoint\GetEntityEndpoint;
 use MoySklad\Entity\Discount\BonusProgram;
 
 class BonusProgramClient extends EntityClientBase
 {
-    use GetEntitiesListEndpoint;
+    use
+        GetEntitiesListEndpoint,
+        GetEntityEndpoint,
+        DeleteEntityEndpoint,
+        DeleteEntitiesEndpoint;
 
     /**
      * BonusProgramClient constructor.
