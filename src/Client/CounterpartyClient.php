@@ -16,7 +16,6 @@ use MoySklad\Entity\Agent\Counterparty;
 use MoySklad\Entity\ContactPerson;
 use MoySklad\Entity\ListEntity;
 use MoySklad\Entity\Metadata\AdditionMetadata;
-use MoySklad\Entity\Metadata\Metadata;
 use MoySklad\Entity\Note;
 use MoySklad\Http\RequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;

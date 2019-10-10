@@ -10,7 +10,6 @@ use MoySklad\Client\Endpoint\GetEntityEndpoint;
 use MoySklad\Client\Endpoint\PostEntitiesEndpoint;
 use MoySklad\Client\Endpoint\PostEntityEndpoint;
 use MoySklad\Client\Endpoint\PutEntityEndpoint;
-use MoySklad\Entity\Metadata\Metadata;
 use MoySklad\Entity\Metadata\VariantMetadata;
 use MoySklad\Entity\Variant;
 use MoySklad\Http\RequestExecutor;
