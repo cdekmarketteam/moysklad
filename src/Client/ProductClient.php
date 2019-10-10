@@ -81,7 +81,9 @@ class ProductClient extends EntityClientBase
      */
     public function massUpdateImages(string $productId, array $images): array
     {
-        return RequestExecutor::path($this->getApi(), $this->getPath().$productId.'/images')->bodyArray($images)->post("array<{$this->getMetaEntityClass()}>");
+        $className = Image::class;
+
+        return RequestExecutor::path($this->getApi(), $this->getPath().$productId.'/images')->bodyArray($images)->post("array<{$className}>");
     }
 
     /**
