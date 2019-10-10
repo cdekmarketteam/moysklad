@@ -40,7 +40,7 @@ $api = new ApiClient('host', true, [
 Например, чтобы получить список всех контрагентов или одного контрагента, достаточно выполнить следующий код:
 ```php
 $counterpartyList = $api->entity()->counterparty()->getList();
-$counterparty = $api->entity()->counterparty()->getById('id');
+$counterparty = $api->entity()->counterparty()->get('id');
 ```
 
 Список возможных фильтров:
@@ -92,11 +92,7 @@ $product = $api->entity()->product()->create($product);
 
 ```php
 $product->name = 'new name';
-$product = $api->entity()->product()->editByEntity($product);
-
-$product->name = 'another name';
-$product = $api->entity()->product()->editById($product->id, $product);
-
+$product = $api->entity()->product()->update($product);
 ```
 
 #### 2.4. Вложенные сущности
@@ -114,7 +110,7 @@ $counterpartyAccount = $api->entity()->counterparty()->getAccount('counterparty_
 такие вложенные сущности, как полный адрес, при ответе с API заполняются только метаданными, 
 для того чтобы заполнить ее основные свойства необходимо вызвать метод `fetch()`:
 ```php
-$counterparty = $api->entity()->counterparty()->getById('id');
+$counterparty = $api->entity()->counterparty()->get('id');
 $addressCity = $counterparty->legalAddressFull->city; // null
 
 $counterparty->legalAddressFull->fetch();
