@@ -20,6 +20,18 @@ class CompanySettingsClient extends EntityClientBase
     }
 
     /**
+     * @return CompanySettings
+     * @throws ApiClientException
+     */
+    public function getCompanySettings(): CompanySettings
+    {
+        /** @var CompanySettings $companySettings */
+        $companySettings = RequestExecutor::path($this->getApi(), $this->getPath())->get(CompanySettings::class);
+
+        return $companySettings;
+    }
+
+    /**
      * @return PriceType[]
      * @throws ApiClientException
      */

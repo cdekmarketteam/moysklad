@@ -4,11 +4,14 @@ namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
 use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
+use MoySklad\Client\Endpoint\GetEntityEndpoint;
 use MoySklad\Entity\Group;
 
 class GroupClient extends EntityClientBase
 {
-    use GetEntitiesListEndpoint;
+    use
+        GetEntitiesListEndpoint,
+        GetEntityEndpoint;
 
     /**
      * GroupClient constructor.
