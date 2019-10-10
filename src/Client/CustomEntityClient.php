@@ -4,7 +4,6 @@ namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
 use MoySklad\Client\Endpoint\DeleteEntityEndpoint;
-use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
 use MoySklad\Client\Endpoint\PostEntityEndpoint;
 use MoySklad\Client\Endpoint\PutEntityEndpoint;
 use MoySklad\Entity\CustomEntity;
