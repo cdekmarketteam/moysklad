@@ -3,6 +3,7 @@
 namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Pack
 {
@@ -13,11 +14,13 @@ class Pack
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $quantity;
 
     /**
      * @Type("MoySklad\Entity\Uom")
+     * @Generator(type="object")
      */
     public $uom;
 

@@ -3,6 +3,7 @@
 namespace MoySklad\Entity\Store;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 use MoySklad\Entity\MetaEntity;
 
 abstract class AbstractStore extends MetaEntity
@@ -18,16 +19,19 @@ abstract class AbstractStore extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $name;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $description;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $externalCode;
 
@@ -38,6 +42,7 @@ abstract class AbstractStore extends MetaEntity
 
     /**
      * @Type("bool")
+     * @Generator()
      */
     public $shared;
 
@@ -47,7 +52,7 @@ abstract class AbstractStore extends MetaEntity
     public $archived;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 
@@ -58,6 +63,7 @@ abstract class AbstractStore extends MetaEntity
 
     /**
      * @Type("MoySklad\Entity\Group")
+     * @Generator(type="object", anyFromExists=true)
      */
     public $group;
 

@@ -3,6 +3,7 @@
 namespace MoySklad\Http;
 
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
 use JMS\Serializer\Serializer;
 use MoySklad\ApiClient;
@@ -43,7 +44,10 @@ final class RequestExecutor
     /**
      * @var array
      */
-    private $headers = [];
+    private $headers = [
+        'Content-Type' => 'application/json',
+        'Accept'       => 'application/json;charset=utf-8',
+    ];
 
     /**
      * @var Param[]
@@ -208,7 +212,7 @@ final class RequestExecutor
 
         $paramTypes = array_unique(array_column($this->params, 'type'));
         foreach ($paramTypes as $paramType) {
-            $this->query[urlencode($paramType)] = urlencode(Param::renderParamString($paramType, $this->params));
+            $this->query[urlencode($paramType)] = Param::renderParamString($paramType, $this->params);
         }
 
         return $this->url.'?'.http_build_query($this->query);
@@ -237,7 +241,12 @@ final class RequestExecutor
 
             return $response->getBody()->getContents();
         } catch (GuzzleException $e) {
-            throw new ApiClientException($request->getMethod().' '.$request->getUri(), $e->getCode(), $e->getMessage());
+            $message = $e->getMessage();
+            if ($e instanceof ClientException) {
+                $message .= ' Response content: ' . $e->getResponse()->getBody()->getContents();
+            }
+
+            throw new ApiClientException($request->getMethod().' '.$request->getUri(), $e->getCode(), $message);
         }
     }
 

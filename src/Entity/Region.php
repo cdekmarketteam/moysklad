@@ -12,7 +12,7 @@ class Region extends MetaEntity
     public $version;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 

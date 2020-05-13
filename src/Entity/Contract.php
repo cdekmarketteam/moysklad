@@ -3,26 +3,31 @@
 namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Contract extends MetaEntity
 {
     /**
      * @Type("string")
+     * @Generator()
      */
     public $name;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $description;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $code;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $externalCode;
 
@@ -38,11 +43,13 @@ class Contract extends MetaEntity
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $rewardPercent;
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $sum;
 
@@ -57,17 +64,18 @@ class Contract extends MetaEntity
     public $archived;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $moment;
 
     /**
      * @Type("MoySklad\Entity\Agent\Counterparty")
+     * @Generator(type="object")
      */
     public $agent;
 
@@ -83,6 +91,7 @@ class Contract extends MetaEntity
 
     /**
      * @Type("MoySklad\Entity\Group")
+     * @Generator(type="object", anyFromExists=true)
      */
     public $group;
 
@@ -103,6 +112,7 @@ class Contract extends MetaEntity
 
     /**
      * @Type("MoySklad\Entity\Rate")
+     * @Generator(type="object")
      */
     public $rate;
 

@@ -105,6 +105,14 @@ class EntityClient
     }
 
     /**
+     * @return CustomerOrderClient
+     */
+    public function customerorder(): CustomerOrderClient
+    {
+        return new CustomerOrderClient($this->api);
+    }
+
+    /**
      * @return DiscountClient
      */
     public function discount(): DiscountClient
@@ -136,12 +144,22 @@ class EntityClient
         return new GroupClient($this->api);
     }
 
+    public function image(): ImageClient
+    {
+        return new ImageClient($this->api);
+    }
+
     /**
      * @return OrganizationClient
      */
     public function organization(): OrganizationClient
     {
         return new OrganizationClient($this->api);
+    }
+
+    public function pricetype(): PriceTypeClient
+    {
+        return new PriceTypeClient($this->api);
     }
 
     /**
@@ -222,5 +240,32 @@ class EntityClient
     public function variant(): VariantClient
     {
         return new VariantClient($this->api);
+    }
+
+    public function getAllClassObjects(string $class): array
+    {
+        return $this->byClass($class)->getList()->rows;
+    }
+
+    public function byClass(string $class): EntityClientBase
+    {
+        $entity = $this->getEntityByClass($class);
+        if (!$this->hasEntity($entity)) {
+            throw new \RuntimeException("Undefined '$entity' entity'");
+        }
+
+        return $this->$entity();
+    }
+
+    public function hasEntity(string $class): bool
+    {
+        $entity = $this->getEntityByClass($class);
+        return method_exists($this, $entity);
+    }
+
+    public function getEntityByClass(string $class): string
+    {
+        $class = explode('\\', $class);
+        return array_pop($class);
     }
 }

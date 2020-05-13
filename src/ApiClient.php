@@ -108,6 +108,11 @@ class ApiClient
         return new EntityClient($this);
     }
 
+    public function getAllClassObjects(string $class)
+    {
+        return (new EntityClient($this))->getAllClassObjects($class);
+    }
+
     /**
      * @return RequestSenderInterface
      */

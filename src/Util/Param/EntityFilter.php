@@ -60,13 +60,6 @@ class EntityFilter extends Param
      */
     public function render(): string
     {
-        $filter = $this->field.$this->condition;
-        $meta = $this->value->getMeta();
-
-        if (!is_null($meta)) {
-            $filter .= $meta->href;
-        }
-
-        return $filter;
+        return $this->field . $this->condition . $this->value->{$this->field};
     }
 }

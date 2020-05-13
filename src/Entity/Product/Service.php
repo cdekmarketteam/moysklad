@@ -3,6 +3,7 @@
 namespace MoySklad\Entity\Product;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Service extends AbstractProduct
 {
@@ -23,6 +24,7 @@ class Service extends AbstractProduct
 
     /**
      * @Type("MoySklad\Entity\Uom")
+     * @Generator(type="object")
      */
     public $uom;
 
@@ -43,6 +45,7 @@ class Service extends AbstractProduct
 
     /**
      * @Type("array<MoySklad\Entity\Barcode>")
+     * @Generator(type="objectArray", oneForEachProperty=true)
      */
     public $barcodes = [];
 
