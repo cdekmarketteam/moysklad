@@ -7,6 +7,8 @@ use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
+use MoySklad\Entity\MetaEntity;
+use MoySklad\Entity\Barcode;
 
 class SerializerInstance
 {
@@ -39,13 +41,13 @@ class SerializerInstance
                     function (HandlerRegistry $registry) {
                         $registry->registerHandler(
                             self::DIRECTION['deserialization'],
-                            'MoySklad\Entity\MetaEntity',
+                            MetaEntity::class,
                             'json',
                             new MetaEntityDeserializeHandler()
                         );
                         $registry->registerHandler(
                             self::DIRECTION['deserialization'],
-                            'MoySklad\Entity\Barcode',
+                            Barcode::class,
                             'json',
                             new BarcodeDeserializeHandler()
                         );
