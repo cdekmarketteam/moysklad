@@ -3,6 +3,7 @@
 namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 final class Meta
 {
@@ -14,6 +15,8 @@ final class Meta
         'discount' => Discount\Discount::class,
         'bonusprogram' => Discount\BonusProgram::class,
         'bonustransaction' => Discount\BonusTransaction::class,
+
+        'customerorder' => Document\CustomerOrder::class,
 
         'bundle' => Product\Bundle::class,
         'product' => Product\Product::class,
@@ -52,46 +55,55 @@ final class Meta
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $href;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $metadataHref;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $type;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $mediaType;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $uuidHref;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $downloadHref;
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $size;
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $limit;
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $offset;
 

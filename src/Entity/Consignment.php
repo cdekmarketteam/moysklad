@@ -32,7 +32,7 @@ class Consignment extends MetaEntity
     public $label;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 

@@ -3,11 +3,13 @@
 namespace MoySklad\Entity\Store;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Store extends AbstractStore
 {
     /**
      * @Type("string")
+     * @Generator()
      */
     public $code;
 

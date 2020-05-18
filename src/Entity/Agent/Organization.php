@@ -4,6 +4,7 @@ namespace MoySklad\Entity\Agent;
 
 use MoySklad\Entity\MetaEntity;
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Organization extends MetaEntity
 {
@@ -14,8 +15,15 @@ class Organization extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $code;
+
+    /**
+     * @Type("string")
+     * @Generator()
+     */
+    public $name;
 
     /**
      * @Type("string")
@@ -39,31 +47,37 @@ class Organization extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $fax;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $utmUrl;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $director;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $chiefAccountant;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $legalTitle;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $okpo;
 
@@ -74,21 +88,25 @@ class Organization extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $certificateNumber;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $kpp;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $ogrn;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $fsrarId;
 
@@ -99,31 +117,35 @@ class Organization extends MetaEntity
 
     /**
      * @Type("bool")
+     * @Generator()
      */
     public $isEgaisEnable;
 
     /**
      * @Type("bool")
+     * @Generator()
      */
     public $payerVat;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $certificateDate;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $trackingContractDate;
 
     /**
      * @Type("MoySklad\Entity\Address")
+     * @Generator(type="object")
      */
     public $actualAddressFull;
 
     /**
      * @Type("MoySklad\Entity\Address")
+     * @Generator(type="object")
      */
     public $legalAddressFull;
 

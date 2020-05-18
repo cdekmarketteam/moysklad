@@ -63,12 +63,12 @@ abstract class Agent extends MetaEntity
     public $attributes = [];
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $created;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 
@@ -79,6 +79,7 @@ abstract class Agent extends MetaEntity
 
     /**
      * @Type("MoySklad\Entity\Group")
+     * @Generator(type="object", anyFromExists=true)
      */
     public $group;
 }

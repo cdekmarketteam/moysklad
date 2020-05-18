@@ -7,6 +7,8 @@ use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
+use MoySklad\Entity\MetaEntity;
+use MoySklad\Entity\Barcode;
 
 class SerializerInstance
 {
@@ -29,18 +31,30 @@ class SerializerInstance
     public static function getInstance(): Serializer
     {
         if (is_null(self::$instance)) {
-            self::$instance = SerializerBuilder::create()->
-            setPropertyNamingStrategy(
-                new SerializedNameAnnotationStrategy(
-                    new IdenticalPropertyNamingStrategy()
+            self::$instance = SerializerBuilder::create()
+                ->setPropertyNamingStrategy(
+                    new SerializedNameAnnotationStrategy(
+                        new IdenticalPropertyNamingStrategy()
+                    )
                 )
-            )->
-            configureHandlers(function (HandlerRegistry $registry) {
-                $registry->registerHandler(self::DIRECTION['deserialization'], 'MoySklad\Entity\MetaEntity', 'json', new MetaEntityDeserializeHandler());
-                $registry->registerHandler(self::DIRECTION['deserialization'], 'MoySklad\Entity\Barcode', 'json', new BarcodeDeserializeHandler());
-            })->
-            addDefaultHandlers()->
-            build();
+                ->configureHandlers(
+                    function (HandlerRegistry $registry) {
+                        $registry->registerHandler(
+                            self::DIRECTION['deserialization'],
+                            MetaEntity::class,
+                            'json',
+                            new MetaEntityDeserializeHandler()
+                        );
+                        $registry->registerHandler(
+                            self::DIRECTION['deserialization'],
+                            Barcode::class,
+                            'json',
+                            new BarcodeDeserializeHandler()
+                        );
+                    }
+                )
+                ->addDefaultHandlers()
+                ->build();
         }
 
         return self::$instance;

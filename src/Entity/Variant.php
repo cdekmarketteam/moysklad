@@ -3,6 +3,7 @@
 namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Variant extends MetaEntity
 {
@@ -13,11 +14,13 @@ class Variant extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $code;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $externalCode;
 
@@ -27,7 +30,7 @@ class Variant extends MetaEntity
     public $archived;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 
@@ -38,6 +41,7 @@ class Variant extends MetaEntity
 
     /**
      * @Type("MoySklad\Entity\Product\Product")
+     * @Generator(type="object")
      */
     public $product;
 
@@ -63,11 +67,13 @@ class Variant extends MetaEntity
 
     /**
      * @Type("array<MoySklad\Entity\Barcode>")
+     * @Generator(type="objectArray", oneForEachProperty=true)
      */
     public $barcodes = [];
 
     /**
-     * @Type("array<MoySklad\Entity\Attribute>")
+     * @Type("array<MoySklad\Entity\Characteristic>")
+     * @Generator(type="objectArray")
      */
     public $characteristics = [];
 }

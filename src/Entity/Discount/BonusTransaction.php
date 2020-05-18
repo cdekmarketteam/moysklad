@@ -38,17 +38,17 @@ class BonusTransaction extends MetaEntity
     public $applicable;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $created;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $moment;
 
@@ -69,6 +69,7 @@ class BonusTransaction extends MetaEntity
 
     /**
      * @Type("MoySklad\Entity\Group")
+     * @Generator(type="object", anyFromExists=true)
      */
     public $group;
 

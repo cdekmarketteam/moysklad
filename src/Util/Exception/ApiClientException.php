@@ -22,7 +22,7 @@ class ApiClientException extends \Exception
      */
     public function __construct(string $uri, int $statusCode, string $reasonPhrase)
     {
-        parent::__construct($uri.': '.$statusCode.' '.$reasonPhrase);
+        parent::__construct($uri.': '.$statusCode.' '.$reasonPhrase, $statusCode);
 
         $this->statusCode = $statusCode;
         $this->reasonPhrase = $reasonPhrase;
