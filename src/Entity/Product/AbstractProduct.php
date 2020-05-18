@@ -88,7 +88,7 @@ abstract class AbstractProduct extends MetaEntity
     public $archived;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s', '', ['Y-m-d H:i:s', 'Y-m-d H:i:s.v']>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 
