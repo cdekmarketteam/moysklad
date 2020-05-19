@@ -19,26 +19,26 @@ use MoySklad\Util\Object\Annotation\Generator;
 trait StockTrait
 {
     /**
-     * @Type("int")
+     * @Type("float")
      * @Generator()
      */
     public $stock;
 
     /**
-     * @Type("int")
+     * @Type("float")
      * @Generator()
      */
     public $inTransit;
 
     /**
-     * @Type("int")
+     * @Type("float")
      * @Generator()
      */
     public $reserve;
 
 
     /**
-     * @Type("int")
+     * @Type("float")
      * @Generator()
      */
     public $quantity;
