@@ -242,6 +242,14 @@ class EntityClient
         return new VariantClient($this->api);
     }
 
+    /**
+     * @return StockClient
+     */
+    public function stock(): StockClient
+    {
+        return new StockClient($this->api);
+    }
+
     public function getAllClassObjects(string $class): array
     {
         return $this->byClass($class)->getList()->rows;

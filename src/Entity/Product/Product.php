@@ -3,10 +3,13 @@
 namespace MoySklad\Entity\Product;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Entity\StockTrait;
 use MoySklad\Util\Object\Annotation\Generator;
 
 class Product extends AbstractProduct
 {
+    use StockTrait;
+
     /**
      * @Type("string")
      */

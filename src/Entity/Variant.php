@@ -7,6 +7,8 @@ use MoySklad\Util\Object\Annotation\Generator;
 
 class Variant extends MetaEntity
 {
+    use StockTrait;
+
     /**
      * @Type("string")
      */
