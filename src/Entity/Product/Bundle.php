@@ -3,6 +3,7 @@
 namespace MoySklad\Entity\Product;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Bundle extends AbstractProduct
 {
@@ -18,6 +19,7 @@ class Bundle extends AbstractProduct
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $article;
 
@@ -28,11 +30,13 @@ class Bundle extends AbstractProduct
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $weight;
 
     /**
      * @Type("int")
+     * @Generator()
      */
     public $volume;
 
@@ -48,6 +52,7 @@ class Bundle extends AbstractProduct
 
     /**
      * @Type("MoySklad\Entity\Uom")
+     * @Generator(type="object")
      */
     public $uom;
 
@@ -63,11 +68,13 @@ class Bundle extends AbstractProduct
 
     /**
      * @Type("MoySklad\Entity\Country")
+     * @Generator(type="object")
      */
     public $country;
 
     /**
-     * @Type("MoySklad\Entity\ListEntity")
+     * @Type("array<MoySklad\Entity\Component>")
+     * @Generator(type="objectArray")
      */
     public $components;
 
@@ -83,6 +90,7 @@ class Bundle extends AbstractProduct
 
     /**
      * @Type("array<MoySklad\Entity\Barcode>")
+     * @Generator(type="objectArray", oneForEachProperty=true)
      */
     public $barcodes = [];
 

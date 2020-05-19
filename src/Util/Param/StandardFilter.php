@@ -4,7 +4,6 @@ namespace MoySklad\Util\Param;
 
 class StandardFilter extends Param
 {
-
     /**
      * @var string
      */
@@ -28,10 +27,10 @@ class StandardFilter extends Param
      */
     private function __construct(string $field, string $value, string $condition)
     {
-        $this->field = $field;
-        $this->value = $value;
+        $this->field     = $field;
+        $this->value     = $value;
         $this->condition = $condition;
-        $this->type = self::FILTER_PARAM;
+        $this->type      = self::FILTER_PARAM;
     }
 
     /**
@@ -129,6 +128,6 @@ class StandardFilter extends Param
      */
     public function render(): string
     {
-        return $this->field.$this->condition.$this->value;
+        return $this->field . $this->condition . $this->value;
     }
 }

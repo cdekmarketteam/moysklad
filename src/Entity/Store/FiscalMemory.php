@@ -12,7 +12,7 @@ class FiscalMemory
     public $notSendDocCount;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $notSendFirstDocMoment;
 

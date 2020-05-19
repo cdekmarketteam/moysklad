@@ -16,7 +16,7 @@ class Search extends Param
     private function __construct(string $value)
     {
         $this->value = $value;
-        $this->type = self::SEARCH_PARAM;
+        $this->type  = self::SEARCH_PARAM;
     }
 
     /**

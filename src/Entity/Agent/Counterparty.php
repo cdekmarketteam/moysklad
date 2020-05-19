@@ -4,6 +4,7 @@ namespace MoySklad\Entity\Agent;
 
 use MoySklad\Entity\MetaEntity;
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class Counterparty extends MetaEntity
 {
@@ -14,11 +15,19 @@ class Counterparty extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $code;
 
     /**
      * @Type("string")
+     * @Generator()
+     */
+    public $name;
+
+    /**
+     * @Type("string")
+     * @Generator()
      */
     public $fax;
 
@@ -29,16 +38,19 @@ class Counterparty extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator(values={"legal", "entrepreneur", "individual"})
      */
     public $companyType;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $discountCardNumber;
 
     /**
      * @Type("string")
+     * @Generator()
      */
     public $legalTitle;
 
@@ -49,26 +61,37 @@ class Counterparty extends MetaEntity
 
     /**
      * @Type("string")
+     * @Generator(setNullIfNotIn={"companyType": {"legal", "entrepreneur"}})
      */
     public $okpo;
 
     /**
      * @Type("string")
+     * @Generator(setNullIfNotIn={"companyType": {"entrepreneur"}})
      */
     public $ogrnip;
 
     /**
      * @Type("string")
+     * @Generator(setNullIfNotIn={"companyType": {"entrepreneur"}})
      */
     public $certificateNumber;
 
     /**
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
+     * @Generator(type="datetime", setNullIfNotIn={"companyType": {"entrepreneur"}})
+     */
+    public $certificateDate;
+
+    /**
      * @Type("string")
+     * @Generator(setNullIfNotIn={"companyType": {"legal"}})
      */
     public $kpp;
 
     /**
      * @Type("string")
+     * @Generator(setNullIfNotIn={"companyType": {"legal"}})
      */
     public $ogrn;
 
@@ -84,13 +107,9 @@ class Counterparty extends MetaEntity
 
     /**
      * @Type("array<string>")
+     * @Generator(type="stringArray")
      */
     public $tags = [];
-
-    /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
-     */
-    public $certificateDate;
 
     /**
      * @Type("MoySklad\Entity\State")
@@ -104,16 +123,19 @@ class Counterparty extends MetaEntity
 
     /**
      * @Type("MoySklad\Entity\PriceType")
+     * @Generator(type="object")
      */
     public $priceType;
 
     /**
      * @Type("MoySklad\Entity\Address")
+     * @Generator(type="object")
      */
     public $actualAddressFull;
 
     /**
      * @Type("MoySklad\Entity\Address")
+     * @Generator(type="object")
      */
     public $legalAddressFull;
 

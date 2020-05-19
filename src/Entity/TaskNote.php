@@ -12,7 +12,7 @@ class TaskNote extends MetaEntity
     public $text;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $moment;
 

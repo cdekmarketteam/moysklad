@@ -17,22 +17,22 @@ class Task extends MetaEntity
     public $done;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $created;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $updated;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $dueToDate;
 
     /**
-     * @Type("DateTime<'Y-m-d H:i:s'>")
+     * @Type("DateTime<'Y-m-d H:i:s.v'>")
      */
     public $completed;
 
