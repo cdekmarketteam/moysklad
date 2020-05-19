@@ -19,6 +19,19 @@ use MoySklad\Util\Object\Annotation\Generator;
 trait StockTrait
 {
     /**
+     * @Type("string")
+     * @Generator()
+     */
+    public $article;
+
+    /**
+     * @Type("MoySklad\Entity\Uom")
+     * @Generator(type="object")
+     * @var Uom
+     */
+    public $uom;
+
+    /**
      * @Type("float")
      * @Generator()
      */

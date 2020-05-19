@@ -27,12 +27,6 @@ class Product extends AbstractProduct
 
     /**
      * @Type("string")
-     * @Generator()
-     */
-    public $article;
-
-    /**
-     * @Type("string")
      */
     public $tnved;
 
@@ -101,12 +95,6 @@ class Product extends AbstractProduct
      * @Type("MoySklad\Entity\Product\Alcoholic")
      */
     public $alcoholic;
-
-    /**
-     * @Type("MoySklad\Entity\Uom")
-     * @Generator(type="object")
-     */
-    public $uom;
 
     /**
      * @Type("MoySklad\Entity\Price")
