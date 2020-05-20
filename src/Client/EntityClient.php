@@ -3,6 +3,9 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
+use MoySklad\Entity\Meta;
+use MoySklad\Http\RequestExecutor;
+use MoySklad\Util\Exception\ApiClientException;
 
 class EntityClient
 {
@@ -275,5 +278,17 @@ class EntityClient
     {
         $class = explode('\\', $class);
         return array_pop($class);
+    }
+
+    /**
+     * Получение модели по её мета-данным
+     *
+     * @param Meta $meta
+     * @return object
+     * @throws ApiClientException
+     */
+    public function getByMeta(Meta $meta): object
+    {
+        return RequestExecutor::path($this->api, $meta->href)->get($meta->getClassName());
     }
 }
