@@ -17,5 +17,7 @@
 
     <php>
         <env name="MOYSKLAD_HOST" value="online.moysklad.ru" />
+        <env name="MOYSKLAD_LOGIN" value="" />
+        <env name="MOYSKLAD_PASSWORD" value="" />
     </php>
 </phpunit>
