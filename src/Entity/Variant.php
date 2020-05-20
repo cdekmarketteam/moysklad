@@ -69,7 +69,6 @@ class Variant extends MetaEntity
 
     /**
      * @Type("array<MoySklad\Entity\Barcode>")
-     * @Generator(type="objectArray", oneForEachProperty=true)
      */
     public $barcodes = [];
 

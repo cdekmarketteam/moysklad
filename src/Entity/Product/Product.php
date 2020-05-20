@@ -4,11 +4,29 @@ namespace MoySklad\Entity\Product;
 
 use JMS\Serializer\Annotation\Type;
 use MoySklad\Entity\StockTrait;
+use MoySklad\Entity\Uom;
 use MoySklad\Util\Object\Annotation\Generator;
 
 class Product extends AbstractProduct
 {
     use StockTrait;
+
+    /**
+     * Данное поле актуально при создании товара, так что ему нужен генератор для тестов
+     *
+     * @Type("string")
+     * @Generator()
+     */
+    public $article;
+
+    /**
+     * Данное поле требуется при создании товара, так что ему нужен генератор для тестов
+     *
+     * @Type("MoySklad\Entity\Uom")
+     * @Generator(type="object")
+     * @var Uom
+     */
+    public $uom;
 
     /**
      * @Type("string")
@@ -113,7 +131,6 @@ class Product extends AbstractProduct
 
     /**
      * @Type("array<MoySklad\Entity\Barcode>")
-     * @Generator(type="objectArray", oneForEachProperty=true)
      */
     public $barcodes = [];
 

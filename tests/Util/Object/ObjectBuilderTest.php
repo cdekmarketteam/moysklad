@@ -38,7 +38,7 @@ class ObjectBuilderTest extends TestCase
      */
     protected $objectBuilder;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->api               = $this->createMock(ApiClient::class);
         $this->objectCollection  = $this->createMock(ObjectCollection::class);

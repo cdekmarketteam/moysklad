@@ -45,7 +45,6 @@ class Service extends AbstractProduct
 
     /**
      * @Type("array<MoySklad\Entity\Barcode>")
-     * @Generator(type="objectArray", oneForEachProperty=true)
      */
     public $barcodes = [];
 

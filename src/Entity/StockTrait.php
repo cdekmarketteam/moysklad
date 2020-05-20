@@ -10,6 +10,11 @@ use MoySklad\Util\Object\Annotation\Generator;
  * @package MoySklad\Entity
  *
  * Трейт сущностей, которые хранятся на складе - товары и варианты
+ * Данные поля по большей части используются только в отчёте остатков. Но поскольку у нас формат респонса типизованный
+ * и вендор задал тип Product или Variant, то придётся добавить в них все когда-либо использованные поля
+ *
+ * При этом, на них нельзя повесить генераторы для тестов, потому что тогда упадут тесты создания базовых сущностей
+ * А уж как тогда тестировать отчёты... разве что только руками
  *
  * @copyright CDEK.MARKET, Ltd. (ООО «СДЭК.МАРКЕТ» http://cdek.market)
  * @project ms-lib
@@ -20,39 +25,44 @@ trait StockTrait
 {
     /**
      * @Type("string")
-     * @Generator()
      */
     public $article;
 
     /**
+     * Базовая цена
+     * @Type("int")
+     */
+    public $price;
+
+    /**
+     * Скидочная цена
+     * @Type("int")
+     */
+    public $salePrice;
+
+    /**
      * @Type("MoySklad\Entity\Uom")
-     * @Generator(type="object")
      * @var Uom
      */
     public $uom;
 
     /**
      * @Type("float")
-     * @Generator()
      */
     public $stock;
 
     /**
      * @Type("float")
-     * @Generator()
      */
     public $inTransit;
 
     /**
      * @Type("float")
-     * @Generator()
      */
     public $reserve;
 
-
     /**
      * @Type("float")
-     * @Generator()
      */
     public $quantity;
 }
