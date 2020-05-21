@@ -147,11 +147,6 @@ class EntityClient
         return new GroupClient($this->api);
     }
 
-    public function image(): ImageClient
-    {
-        return new ImageClient($this->api);
-    }
-
     /**
      * @return OrganizationClient
      */
