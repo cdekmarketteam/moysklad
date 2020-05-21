@@ -119,4 +119,23 @@ final class Meta
 
         return self::TYPES[$type];
     }
+
+    /**
+     * @return string
+     */
+    public function getClassName(): string
+    {
+        return static::getClassNameByType($this->type);
+    }
+
+    /**
+     * id не всегда передаётся в объекты, зато всегда есть в ссылке на объект в мета-данных
+     *
+     * @return string
+     */
+    public function getId() : string
+    {
+        $href = explode('/', $this->href);
+        return end($href);
+    }
 }

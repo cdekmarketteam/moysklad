@@ -28,4 +28,12 @@ class Characteristic
      * @Generator()
      */
     public $value;
+
+    /**
+     * @return Meta|null
+     */
+    public function getMeta(): ?Meta
+    {
+        return $this->meta;
+    }
 }
