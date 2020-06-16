@@ -8,7 +8,7 @@ use MoySklad\Util\Object\Annotation\Generator;
 class Position
 {
     /**
-     * @Type("int")
+     * @Type("string")
      */
     public $id;
 
