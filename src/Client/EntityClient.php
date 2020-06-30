@@ -248,6 +248,14 @@ class EntityClient
         return new StockClient($this->api);
     }
 
+    /**
+     * @return StateClient
+     */
+    public function state(): StateClient
+    {
+        return new StateClient($this->api);
+    }
+
     public function getAllClassObjects(string $class): array
     {
         return $this->byClass($class)->getList()->rows;
