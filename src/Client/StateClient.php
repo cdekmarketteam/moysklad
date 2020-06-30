@@ -28,7 +28,7 @@ class StateClient extends EntityClientBase
      */
     public function __construct(ApiClient $api)
     {
-        parent::__construct($api, '/entity/metadata?filter=type=state');
+        parent::__construct($api, '/entity/customerorder/metadata?entityType=state');
     }
 
     /**
