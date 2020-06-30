@@ -3,8 +3,9 @@
 namespace MoySklad\Entity\Store;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Entity\MetaEntity;
 
-class State
+class State extends MetaEntity
 {
     /**
      * @Type("DateTime<'Y-m-d H:i:s.v'>")
