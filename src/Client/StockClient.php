@@ -3,11 +3,14 @@
 namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
-use MoySklad\Client\Endpoint\GetEntitiesListEndpoint;
-use MoySklad\Client\Endpoint\GetEntityEndpoint;
 use MoySklad\Client\Endpoint\GetMetadataAttributeEndpoint;
 use MoySklad\Client\Endpoint\GetMetadataEndpoint;
+use MoySklad\Entity\ListByStocks;
+use MoySklad\Entity\ListEntity;
 use MoySklad\Entity\Stock;
+use MoySklad\Http\RequestExecutor;
+use MoySklad\Util\Exception\ApiClientException;
+use MoySklad\Util\Param\Param;
 
 /**
  * Class StockClient
@@ -22,10 +25,8 @@ use MoySklad\Entity\Stock;
  */
 class StockClient extends EntityClientBase
 {
-    use GetEntitiesListEndpoint,
-        GetMetadataEndpoint,
-        GetMetadataAttributeEndpoint,
-        GetEntityEndpoint;
+    use GetMetadataEndpoint,
+        GetMetadataAttributeEndpoint;
 
     /**
      * ServiceClient constructor.
@@ -33,8 +34,43 @@ class StockClient extends EntityClientBase
      */
     public function __construct(ApiClient $api)
     {
-        parent::__construct($api, '/report/stock/all');
+        parent::__construct($api, '/report/stock');
     }
+
+    /**
+     * Получение всех остатков
+     *
+     * @param Param[] $params
+     * @return ListEntity
+     * @throws ApiClientException
+     * @throws \Exception
+     */
+    public function getAll(array $params = []) : ListEntity
+    {
+        /** @var $listEntity ListEntity */
+        $listEntity = RequestExecutor::path($this->getApi(), $this->getPath() . '/all')->params($params)->get(ListEntity::class);
+
+        return $listEntity;
+    }
+
+    /**
+     * Получение остатков по складам
+     *
+     * @param Param[] $params
+     * @return ListEntity
+     * @throws ApiClientException
+     * @throws \Exception
+     */
+    public function getAllByStore(array $params = []) : ListEntity
+    {
+        /** @var $listEntity ListEntity */
+        $listEntity = RequestExecutor::path($this->getApi(), $this->getPath() . '/bystore')->params($params)->get(ListByStocks::class);
+
+        return $listEntity;
+    }
+
+    // Есть ещё отчёт с остатками по документу
+    // @see https://dev.moysklad.ru/doc/api/remap/1.1/#отчёт-остатки-остатки-по-документам-get
 
     /**
      * @return string
