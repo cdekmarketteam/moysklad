@@ -136,7 +136,7 @@ final class Meta
     public function getId() : string
     {
         if ($this->uuidHref) {
-            $href = explode('?=', $this->uuidHref);
+            $href = explode('?id=', $this->uuidHref);
             if (count($href) == 2) {
                 return end($href);
             }
