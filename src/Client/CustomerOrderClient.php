@@ -21,6 +21,7 @@ use MoySklad\Util\Param\Param;
 class CustomerOrderClient extends EntityClientBase
 {
     use
+        GetEntitiesListEndpoint,
         GetEntityEndpoint,
         PutEntityEndpoint,
         PostEntityEndpoint,
@@ -45,7 +46,7 @@ class CustomerOrderClient extends EntityClientBase
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function getList(string $startDate, array $params = []): AbstractListEntity
+    public function getListByDate(string $startDate, array $params = []): AbstractListEntity
     {
         /** @var $listEntity ListEntity */
         $listEntity = RequestExecutor::path(
