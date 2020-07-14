@@ -193,7 +193,7 @@ final class RequestExecutor
     private function auth(ApiClient $api): self
     {
         if ($api->getToken()) {
-            $this->headers['Authorization'] = 'Basic '.$api->getToken();
+            $this->headers['Authorization'] = 'Bearer '.$api->getToken();
             return $this;
         }
 
