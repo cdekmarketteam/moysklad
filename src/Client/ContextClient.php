@@ -16,7 +16,7 @@ class ContextClient extends EntityClientBase
      */
     public function __construct(ApiClient $api)
     {
-        parent::__construct($api, '/entity/context/');
+        parent::__construct($api, '/context/');
     }
 
     /**
