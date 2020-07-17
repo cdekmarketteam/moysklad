@@ -256,6 +256,14 @@ class EntityClient
         return new StateClient($this->api);
     }
 
+    /**
+     * @return ContextClient
+     */
+    public function context(): ContextClient
+    {
+        return new ContextClient($this->api);
+    }
+
     public function getAllClassObjects(string $class): array
     {
         return $this->byClass($class)->getList()->rows;
