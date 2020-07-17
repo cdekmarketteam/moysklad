@@ -4,8 +4,7 @@ namespace MoySklad\Client;
 
 use MoySklad\ApiClient;
 use MoySklad\Entity\Context;
-use MoySklad\Entity\MetaEntity;
-use MoySklad\Http\RequestExecutor;
+use MoySklad\Http\VendorRequestExecutor;
 use MoySklad\Util\Exception\ApiClientException;
 
 class ContextClient extends EntityClientBase
@@ -22,13 +21,14 @@ class ContextClient extends EntityClientBase
 
     /**
      * @param string $contextKey
-     * @return MetaEntity
+     * @return Context|mixed
      * @throws ApiClientException
      * @throws \Exception
      */
-    public function get(string $contextKey): MetaEntity
+    public function get(string $contextKey): Context
     {
-        return RequestExecutor::path($this->getApi(), $this->getPath().$contextKey)->post(Context::class);
+        return VendorRequestExecutor::path($this->getApi(), $this->getPath() . $contextKey)
+                                    ->post(Context::class);
     }
 
     /**
