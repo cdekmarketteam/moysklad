@@ -9,22 +9,26 @@ use JMS\Serializer\Serializer;
 use MoySklad\ApiClient;
 use MoySklad\Entity\MetaEntity;
 use MoySklad\Util\Exception\ApiClientException;
-use MoySklad\Util\Constant;
 use MoySklad\Util\Param\Param;
 use MoySklad\Util\Serializer\SerializerInstance;
 use MoySklad\Util\StringsTrait;
 
-final class RequestExecutor
+/**
+ * Класс отправки запросов в JSON-API 1.2
+ */
+class RequestExecutor
 {
     use StringsTrait;
 
-    const METHOD_GET = 'GET',
-        METHOD_POST = 'POST',
-        METHOD_PUT = 'PUT',
-        METHOD_DELETE = 'DELETE';
+    public const METHOD_GET = 'GET';
+    public const METHOD_POST = 'POST';
+    public const METHOD_PUT = 'PUT';
+    public const METHOD_DELETE = 'DELETE';
 
-    const PATH_TYPE = 'path',
-        URL_TYPE = 'url';
+    public const TYPE_PATH = 'path';
+    public const TYPE_URL = 'url';
+
+    public const API_PATH = "/api/remap/1.2";
 
     /**
      * @var string
@@ -75,21 +79,21 @@ final class RequestExecutor
      * @param string $url
      * @param string $type
      */
-    private function __construct(ApiClient $api, string $url, string $type = self::PATH_TYPE)
+    private function __construct(ApiClient $api, string $url, string $type = self::TYPE_PATH)
     {
         $this->serializer = SerializerInstance::getInstance();
 
         switch ($type) {
-            case self::PATH_TYPE:
+            case static::TYPE_PATH:
                 if (is_null($api)) {
                     throw new \InvalidArgumentException('To make an API request you need an initialized instance of ApiClient!');
                 }
 
                 $this->client = $api->getClient();
-                $this->hostApiPath = $api->getHost().Constant::API_PATH;
+                $this->hostApiPath = $api->getHost() . static::API_PATH;
                 $this->url = $this->hostApiPath.$url;
                 break;
-            case self::URL_TYPE:
+            case static::TYPE_URL:
                 if (is_null($api->getClient())) {
                     throw new \InvalidArgumentException("To make an API request you need an initialized instance of RequestSenderInterface!");
                 }
@@ -110,7 +114,7 @@ final class RequestExecutor
      */
     public static function path(ApiClient $api, string $path): self
     {
-        return new self($api, $path);
+        return new static($api, $path);
     }
 
     /**
@@ -120,7 +124,7 @@ final class RequestExecutor
      */
     public static function url(ApiClient $api, string $url): self
     {
-        return new self($api, $url, self::URL_TYPE);
+        return new static($api, $url, static::TYPE_URL);
     }
 
     /**
@@ -193,7 +197,7 @@ final class RequestExecutor
     private function auth(ApiClient $api): self
     {
         if ($api->getToken()) {
-            $this->headers['Authorization'] = 'Basic '.$api->getToken();
+            $this->headers['Authorization'] = 'Bearer '.$api->getToken();
             return $this;
         }
 
@@ -257,14 +261,14 @@ final class RequestExecutor
      */
     public function get(string $className)
     {
-        $request = new Request(self::METHOD_GET, $this->buildFullUrl(), $this->headers);
+        $request = new Request(static::METHOD_GET, $this->buildFullUrl(), $this->headers);
 
         return $this->serializer->deserialize($this->executeRequest($request), $className, SerializerInstance::JSON_FORMAT);
     }
 
     /**
      * @param string $className
-     * @return MetaEntity|MetaEntity[]
+     * @return MetaEntity|MetaEntity[]|mixed Вообще результат $className не всегда может быть наследником MetaEntity или их массивом
      * @throws ApiClientException
      */
     public function post(string $className)
@@ -274,7 +278,7 @@ final class RequestExecutor
             $strBody = $this->serializer->serialize($this->body, SerializerInstance::JSON_FORMAT);
         }
 
-        $request = new Request(self::METHOD_POST, $this->buildFullUrl(), $this->headers, $strBody);
+        $request = new Request(static::METHOD_POST, $this->buildFullUrl(), $this->headers, $strBody);
 
         return $this->serializer->deserialize($this->executeRequest($request), $className, SerializerInstance::JSON_FORMAT);
     }
@@ -291,7 +295,7 @@ final class RequestExecutor
             $strBody = $this->serializer->serialize($this->body, SerializerInstance::JSON_FORMAT);
         }
 
-        $request = new Request(self::METHOD_PUT, $this->buildFullUrl(), $this->headers, $strBody);
+        $request = new Request(static::METHOD_PUT, $this->buildFullUrl(), $this->headers, $strBody);
 
         return $this->serializer->deserialize($this->executeRequest($request), $className, SerializerInstance::JSON_FORMAT);
     }
@@ -301,7 +305,7 @@ final class RequestExecutor
      */
     public function delete(): void
     {
-        $request = new Request(self::METHOD_DELETE, $this->buildFullUrl(), $this->headers);
+        $request = new Request(static::METHOD_DELETE, $this->buildFullUrl(), $this->headers);
 
         $this->executeRequest($request);
     }

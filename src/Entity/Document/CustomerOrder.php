@@ -115,7 +115,7 @@ class CustomerOrder extends MetaEntity
     public $contract;
 
     /**
-     * @Type("MoySklad\Entity\Store\State")
+     * @Type("MoySklad\Entity\State")
      */
     public $state;
 

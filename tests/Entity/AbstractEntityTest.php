@@ -63,7 +63,7 @@ abstract class AbstractEntityTest extends AbstractApiTest
     abstract protected static function getClass(): string;
     abstract protected static function getKey(): string;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         parent::setUpBeforeClass();
 
@@ -83,7 +83,7 @@ abstract class AbstractEntityTest extends AbstractApiTest
         self::createMultipleObjects();
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass() : void
     {
         self::getClient()->delete(self::$createdObject->id);
         self::checkDeletedObject(self::$createdObject);
@@ -160,6 +160,10 @@ abstract class AbstractEntityTest extends AbstractApiTest
             if (is_object($expectedObject->$property)) {
                 if (method_exists($expectedObject->$property, 'fetch')) {
                     $expectedObject->$property->fetch(self::$api);
+                    if (!$actualObject->$property) {
+                        var_dump($actualObject);
+                        var_dump($property);
+                    }
                     $actualObject->$property->fetch(self::$api);
                 }
 

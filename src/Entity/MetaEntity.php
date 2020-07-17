@@ -25,6 +25,18 @@ class MetaEntity
     protected $meta;
 
     /**
+     * MetaEntity constructor
+     *
+     * @param Meta|null $meta
+     */
+    public function __construct(?Meta $meta = null)
+    {
+        if ($meta) {
+            $this->meta = $meta;
+        }
+    }
+
+    /**
      * @param ApiClient $api
      * @throws ApiClientException
      * @throws \Exception

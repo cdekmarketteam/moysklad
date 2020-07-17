@@ -3,12 +3,13 @@
 namespace MoySklad\Entity\Document;
 
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Entity\MetaEntity;
 use MoySklad\Util\Object\Annotation\Generator;
 
-class Position
+class Position extends MetaEntity
 {
     /**
-     * @Type("int")
+     * @Type("string")
      */
     public $id;
 

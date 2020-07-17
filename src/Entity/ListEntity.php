@@ -4,7 +4,10 @@ namespace MoySklad\Entity;
 
 use JMS\Serializer\Annotation\Type;
 
-class ListEntity extends MetaEntity
+/**
+ * Базовый класс для методов получения списка сущностей
+ */
+class ListEntity extends AbstractListEntity
 {
     /**
      * @Type("MoySklad\Entity\Context")

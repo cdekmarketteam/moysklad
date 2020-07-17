@@ -12,7 +12,7 @@ abstract class AbstractApiTest extends TestCase
      */
     protected static $api;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         self::$api = new ApiClient(
             getenv('MOYSKLAD_HOST'),

@@ -7,6 +7,8 @@ use MoySklad\Util\Object\Annotation\Generator;
 
 class Variant extends MetaEntity
 {
+    use StockTrait;
+
     /**
      * @Type("string")
      */
@@ -67,7 +69,6 @@ class Variant extends MetaEntity
 
     /**
      * @Type("array<MoySklad\Entity\Barcode>")
-     * @Generator(type="objectArray", oneForEachProperty=true)
      */
     public $barcodes = [];
 
