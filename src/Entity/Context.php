@@ -2,12 +2,8 @@
 
 namespace MoySklad\Entity;
 
-use JMS\Serializer\Annotation\Type;
+use MoySklad\Entity\Agent\Employee;
 
-final class Context
+final class Context extends Employee
 {
-    /**
-     * @Type("MoySklad\Entity\Agent\Employee")
-     */
-    public $employee;
 }
