@@ -3,7 +3,7 @@
   "description": "PHP SDK Moysklad API 1.2",
   "homepage": "https://github.com/cdekmarketteam/moysklad",
   "type": "library",
-  "licence": "MIT",
+  "license": "MIT",
   "authors": [
     {
       "name": "Dmitry Zykov",
