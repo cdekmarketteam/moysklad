@@ -8,6 +8,11 @@
       "name": "Dmitry Zykov",
       "email": "d.i.zykov@gmail.com",
       "role": "master"
+    },
+    {
+      "name": "Viktor Fursenko",
+      "email": "va.fursenko@yandex.ru",
+      "role": "developer"
     }
   ],
   "require": {

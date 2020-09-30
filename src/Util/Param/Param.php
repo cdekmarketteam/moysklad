@@ -21,10 +21,12 @@ abstract class Param
     protected const LIMIT_PARAM = 'limit';
     protected const OFFSET_PARAM = 'offset';
     protected const SEARCH_PARAM = 'search';
+    protected const EXPAND = 'expand';
 
     private const PARAM_TYPE_SEPARATOR = [
         self::FILTER_PARAM => ';',
         self::ORDER_PARAM => ';',
+        self::EXPAND => ',',
     ];
 
     /**
@@ -68,7 +70,7 @@ abstract class Param
             return $param->render();
         }, $filteredParams);
 
-        if ($paramType == self::FILTER_PARAM || $paramType == self::ORDER_PARAM) {
+        if (array_key_exists($paramType, static::PARAM_TYPE_SEPARATOR)) {
             return implode(self::PARAM_TYPE_SEPARATOR[$paramType], $stringsOfParams);
         }
 
