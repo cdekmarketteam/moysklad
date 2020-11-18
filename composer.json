@@ -17,11 +17,11 @@
   ],
   "require": {
     "php": "^7.3",
-    "guzzlehttp/guzzle": "^6.0",
+    "guzzlehttp/guzzle": "^7.0",
     "ext-json": "*",
-    "jms/serializer": "^3.2",
-    "doctrine/annotations": "^1.7",
-    "indigophp/doctrine-annotation-autoload": "^0.1"
+    "jms/serializer": "^3.10",
+    "doctrine/annotations": "^1.11",
+    "yogarine/doctrine-annotation-autoload": "^0.3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.1",
