@@ -297,7 +297,7 @@ class RequestExecutor
 
         $request = new Request(static::METHOD_PUT, $this->buildFullUrl(), $this->headers, $strBody);
 
-        return $this->serializer->deserialize($this->executeRequest($request), $className, SerializerInstance::JSON_FORMAT);
+        return $this->serializer->deserialize($this->executeRequest($request) ?: "{}", $className, SerializerInstance::JSON_FORMAT);
     }
 
     /**
