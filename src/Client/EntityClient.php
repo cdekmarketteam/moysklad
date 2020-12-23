@@ -272,6 +272,22 @@ class EntityClient
         return new StatusClient($this->api);
     }
 
+    /**
+     * @return RetailDemandClient
+     */
+    public function retaildemand(): RetailDemandClient
+    {
+        return new RetailDemandClient($this->api);
+    }
+
+    /**
+     * @return RetailSalesReturnClient
+     */
+    public function retailsalesreturn(): RetailSalesReturnClient
+    {
+        return new RetailSalesReturnClient($this->api);
+    }
+
     public function getAllClassObjects(string $class): array
     {
         return $this->byClass($class)->getList()->rows;
