@@ -288,6 +288,22 @@ class EntityClient
         return new RetailSalesReturnClient($this->api);
     }
 
+    /**
+     * @return RetailDrawerCashInClient
+     */
+    public function retaildrawercashin(): RetailDrawerCashInClient
+    {
+        return new RetailDrawerCashInClient($this->api);
+    }
+
+    /**
+     * @return RetailDrawerCashOutClient
+     */
+    public function retaildrawercashout(): RetailDrawerCashOutClient
+    {
+        return new RetailDrawerCashOutClient($this->api);
+    }
+
     public function getAllClassObjects(string $class): array
     {
         return $this->byClass($class)->getList()->rows;
