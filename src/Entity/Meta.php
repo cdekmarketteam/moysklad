@@ -18,6 +18,14 @@ final class Meta
 
         'customerorder' => Document\CustomerOrder::class,
 
+        'retaildemand' => Document\RetailDemand::class,
+        'demandposition' => Document\DemandPosition::class,
+        'retailsalesreturn' => Document\RetailSalesReturn::class,
+        'salesreturnposition' => Document\SalesReturnPosition::class,
+        'retaildrawercashin' => Document\RetailDrawerCashIn::class,
+        'retaildrawercashout' => Document\RetailDrawerCashOut::class,
+        'retailshift' => Document\RetailShift::class,
+
         'bundle' => Product\Bundle::class,
         'product' => Product\Product::class,
         'productfolder' => Product\ProductFolder::class,
