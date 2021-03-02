@@ -310,4 +310,12 @@ class EntityClient
     {
         return RequestExecutor::path($this->api, $meta->href)->get($meta->getClassName());
     }
+
+    /**
+     * @return WebHookClient
+     */
+    public function webhook() : WebHookClient
+    {
+        return new WebHookClient($this->api);
+    }
 }
