@@ -4,6 +4,7 @@ namespace MoySklad\Entity\Discount;
 
 use MoySklad\Entity\MetaEntity;
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
 class BonusTransaction extends MetaEntity
 {

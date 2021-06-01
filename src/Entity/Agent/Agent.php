@@ -4,8 +4,9 @@ namespace MoySklad\Entity\Agent;
 
 use MoySklad\Entity\MetaEntity;
 use JMS\Serializer\Annotation\Type;
+use MoySklad\Util\Object\Annotation\Generator;
 
-abstract class Agent extends MetaEntity
+class Agent extends MetaEntity
 {
     /**
      * @Type("string")
