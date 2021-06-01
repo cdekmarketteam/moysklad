@@ -25,6 +25,7 @@ final class Meta
         'retaildrawercashin' => Document\RetailDrawerCashIn::class,
         'retaildrawercashout' => Document\RetailDrawerCashOut::class,
         'retailshift' => Document\RetailShift::class,
+        'enter' => Document\ProductEnter::class,
 
         'bundle' => Product\Bundle::class,
         'product' => Product\Product::class,
