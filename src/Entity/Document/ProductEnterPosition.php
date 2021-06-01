@@ -5,8 +5,12 @@ namespace MoySklad\Entity\Document;
 use JMS\Serializer\Annotation\Type;
 use MoySklad\Entity\MetaEntity;
 use MoySklad\Util\Object\Annotation\Generator;
+use MoySklad\Entity\Country;
 
-class SalesReturnPosition extends MetaEntity
+/**
+ * Позиция оприходования
+ */
+class ProductEnterPosition extends MetaEntity
 {
     /**
      * @Type("int")
@@ -21,19 +25,18 @@ class SalesReturnPosition extends MetaEntity
     public $price;
 
     /**
-     * @Type("int")
-     * @Generator(type="negativeInt")
+     * @Type("string")
      */
-    public $discount;
+    public $gtd;
 
     /**
-     * @Type("int")
-     * @Generator(min=1, max=100)
+     * @Type("MoySklad\Entity\Country")
+     * @Generator(type="object")
      */
-    public $vat;
+    public $country;
 
     /**
-     * @Type("MoySklad\Entity\Product\Product")
+     * @Type("MoySklad\Entity\MetaEntity")
      */
     public $assortment;
 
@@ -49,8 +52,7 @@ class SalesReturnPosition extends MetaEntity
     public $things;
 
     /**
-     * @Type("int")
-     * @Generator()
+     * @Type("string")
      */
-    public $cost;
+    public $reason;
 }

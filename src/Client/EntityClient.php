@@ -346,8 +346,16 @@ class EntityClient
     /**
      * @return WebHookClient
      */
-    public function webhook() : WebHookClient
+    public function webhook(): WebHookClient
     {
         return new WebHookClient($this->api);
+    }
+
+    /**
+     * @return ProductEnterClient
+     */
+    public function productEnter(): ProductEnterClient
+    {
+        return new ProductEnterClient($this->api);
     }
 }
