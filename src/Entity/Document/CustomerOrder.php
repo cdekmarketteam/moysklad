@@ -195,4 +195,9 @@ class CustomerOrder extends MetaEntity
      * @Type("array<MoySklad\Entity\Document\CustomerOrder>")
      */
     public $purchaseOrders = [];
+    
+    /**
+     * @Type("string")
+     */
+    public $shipmentAddress;
 }
