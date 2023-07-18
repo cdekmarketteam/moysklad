@@ -7,7 +7,7 @@ use JMS\Serializer\Annotation\Type;
 class Attribute extends MetaEntity //@todo create deserializer
 {
     /**
-     * @Type("string")
+     * @Type("mixed")
      */
     public $value;
 
